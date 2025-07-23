@@ -67,11 +67,12 @@ const Services = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
+            const animationDelay = `${index * 0.1}s`;
             return (
-              <Card key={index} className="group hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border-border bg-card">
+              <Card key={index} className="group hover:shadow-medium transition-all duration-300 hover:-translate-y-2 border-border bg-card animate-fade-in hover:animate-bounce-subtle" style={{animationDelay}}>
                 <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-primary-foreground" />
+                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:animate-pulse-glow transition-transform duration-300">
+                    <IconComponent className="w-8 h-8 text-primary-foreground animate-float" />
                   </div>
                   <CardTitle className="text-xl text-card-foreground">
                     {service.title}
@@ -89,7 +90,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" className="w-full mt-4">
+                  <Button variant="outline" className="w-full mt-4 hover:animate-pulse transition-all duration-300">
                     Saiba Mais
                   </Button>
                 </CardContent>
