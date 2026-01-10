@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, MapPin, Clock } from "lucide-react";
+import logoJudifarma from "@/assets/logo-judifarma.png";
 
 const Header = () => {
   return (
@@ -25,15 +26,13 @@ const Header = () => {
 
         {/* Main navigation */}
         <div className="flex items-center justify-between py-4">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">+</span>
-            </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">JudiFarma</h1>
-              <p className="text-sm text-muted-foreground">Sua Saúde em Primeiro Lugar</p>
-            </div>
-          </div>
+          <a href="#inicio" className="flex items-center">
+            <img 
+              src={logoJudifarma} 
+              alt="JudiFarma - Vida Saudável" 
+              className="h-12 md:h-14 w-auto"
+            />
+          </a>
 
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#inicio" className="text-foreground hover:text-primary transition-colors">
