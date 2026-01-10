@@ -30,7 +30,7 @@ const Header = () => {
             <img 
               src={logoJudifarma} 
               alt="JudiFarma - Vida Saudável" 
-              className="h-12 md:h-14 w-auto"
+              className="h-16 md:h-20 w-auto"
             />
           </a>
 
