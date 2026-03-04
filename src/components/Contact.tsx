@@ -8,7 +8,6 @@ import {
   MapPin, 
   Clock,
   MessageCircle,
-  Navigation,
   Instagram,
   Facebook
 } from "lucide-react";
@@ -17,48 +16,27 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Telefone Principal",
-      details: "(11) 3333-4444",
-      description: "Seg-Sex: 8h às 20h | Sáb: 8h às 18h"
+      title: "Telefone",
+      details: "945 490 359",
+      description: "Seg-Sex: 08h às 16h"
     },
     {
       icon: MessageCircle,
-      title: "WhatsApp 24h",
-      details: "(11) 99999-8888",
-      description: "Atendimento de emergência disponível"
+      title: "WhatsApp",
+      details: "945 517 448",
+      description: "Envie a sua mensagem"
     },
     {
       icon: Mail,
       title: "E-mail",
-      details: "contato@judifarma.com.br",
-      description: "Respondemos em até 2 horas úteis"
+      details: "judifarma6@gmail.com",
+      description: "Respondemos o mais breve possível"
     },
     {
       icon: MapPin,
-      title: "Endereço Principal",
-      details: "Rua da Saúde, 123 - Centro",
-      description: "São Paulo - SP, CEP: 01234-567"
-    }
-  ];
-
-  const locations = [
-    {
-      name: "Unidade Centro",
-      address: "Rua da Saúde, 123 - Centro",
-      phone: "(11) 3333-4444",
-      hours: "Seg-Sex: 8h-20h | Sáb: 8h-18h"
-    },
-    {
-      name: "Unidade Jardins",
-      address: "Av. Paulista, 456 - Jardins", 
-      phone: "(11) 3333-5555",
-      hours: "Seg-Sex: 8h-20h | Sáb: 8h-18h"
-    },
-    {
-      name: "Unidade Vila Madalena",
-      address: "Rua Harmonia, 789 - Vila Madalena",
-      phone: "(11) 3333-6666", 
-      hours: "Seg-Dom: 8h-22h"
+      title: "Endereço",
+      details: "Bairro Sanzala, Município de Viana",
+      description: "Província de Luanda, Angola"
     }
   ];
 
@@ -67,11 +45,11 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Entre em Contato
+            Entre em Contacto
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Estamos sempre prontos para atendê-lo. Entre em contato conosco através 
-            de qualquer um dos canais abaixo ou visite uma de nossas unidades.
+            Solicite uma cotação ou entre em contacto connosco. Estamos prontos para 
+            atender farmácias, clínicas e hospitais em toda Angola.
           </p>
         </div>
 
@@ -111,7 +89,7 @@ const Contact = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Siga-nos nas redes sociais para dicas de saúde e promoções especiais:
+                  Siga-nos nas redes sociais para novidades e actualizações:
                 </p>
                 <div className="flex space-x-4">
                   <Button variant="outline" size="icon">
@@ -125,19 +103,19 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form - Pedido de Cotação */}
           <div className="lg:col-span-2">
             <Card className="border-border bg-card">
               <CardHeader>
                 <CardTitle className="text-2xl text-card-foreground">
-                  Envie uma Mensagem
+                  Solicitar Cotação
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-card-foreground">Nome Completo</label>
-                    <Input placeholder="Seu nome completo" />
+                    <label className="text-sm font-medium text-card-foreground">Nome / Empresa</label>
+                    <Input placeholder="Nome da sua empresa ou instituição" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-card-foreground">E-mail</label>
@@ -147,84 +125,81 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-card-foreground">Telefone</label>
-                    <Input placeholder="(11) 99999-9999" />
+                    <Input placeholder="9XX XXX XXX" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-card-foreground">Assunto</label>
-                    <Input placeholder="Como podemos ajudar?" />
+                    <label className="text-sm font-medium text-card-foreground">Tipo de Instituição</label>
+                    <Input placeholder="Farmácia, Clínica, Hospital..." />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-card-foreground">Mensagem</label>
+                  <label className="text-sm font-medium text-card-foreground">Descrição do Pedido</label>
                   <Textarea 
-                    placeholder="Descreva sua dúvida ou solicitação..." 
+                    placeholder="Descreva os medicamentos ou produtos que necessita..." 
                     className="min-h-[120px]"
                   />
                 </div>
                 <Button variant="medical" size="lg" className="w-full">
-                  Enviar Mensagem
+                  Enviar Pedido de Cotação
                 </Button>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Locations */}
+        {/* Location */}
         <div className="space-y-8">
           <h3 className="text-2xl font-bold text-foreground text-center">
-            Nossas Unidades
+            Nossa Localização
           </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {locations.map((location, index) => (
-              <Card key={index} className="hover:shadow-medium transition-all duration-300 border-border bg-card">
-                <CardHeader>
-                  <CardTitle className="text-lg text-card-foreground flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-primary" />
-                    {location.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <p className="text-muted-foreground">
-                      {location.address}
-                    </p>
-                    <div className="flex items-center space-x-2 text-primary">
-                      <Phone className="w-4 h-4" />
-                      <span className="font-medium">{location.phone}</span>
-                    </div>
-                    <div className="flex items-center space-x-2 text-muted-foreground">
-                      <Clock className="w-4 h-4" />
-                      <span className="text-sm">{location.hours}</span>
-                    </div>
+          <div className="max-w-xl mx-auto">
+            <Card className="hover:shadow-medium transition-all duration-300 border-border bg-card">
+              <CardHeader>
+                <CardTitle className="text-lg text-card-foreground flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-primary" />
+                  Sede - Viana, Luanda
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <p className="text-muted-foreground">
+                    Bairro Sanzala, sentido Cemitério de Viana, antes das Bombas da Sonangalp
+                  </p>
+                  <p className="text-muted-foreground">
+                    Município de Viana, Província de Luanda
+                  </p>
+                  <div className="flex items-center space-x-2 text-primary">
+                    <Phone className="w-4 h-4" />
+                    <span className="font-medium">945 490 359</span>
                   </div>
-                  <Button variant="outline" className="w-full">
-                    <Navigation className="w-4 h-4 mr-2" />
-                    Como Chegar
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                  <div className="flex items-center space-x-2 text-muted-foreground">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm">Seg-Sex: 08h às 16h</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
-        {/* Emergency Call to Action */}
+        {/* CTA */}
         <div className="mt-16">
           <div className="bg-gradient-accent p-8 rounded-2xl text-center">
             <h3 className="text-2xl font-bold text-accent-foreground mb-4">
-              Precisa de Atendimento Urgente?
+              Precisa de Medicamentos com Urgência?
             </h3>
             <p className="text-accent-foreground/90 mb-6 max-w-2xl mx-auto">
-              Nossa equipe está disponível 24 horas para emergências. 
-              Entre em contato através do nosso WhatsApp ou ligue para nossa central.
+              Entre em contacto connosco pelo WhatsApp ou ligue directamente 
+              para solicitar uma entrega rápida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg">
                 <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp: (11) 99999-8888
+                WhatsApp: 945 517 448
               </Button>
               <Button variant="outline" size="lg" className="bg-accent-foreground/10 border-accent-foreground/20 text-accent-foreground hover:bg-accent-foreground/20">
                 <Phone className="w-5 h-5 mr-2" />
-                Ligar: (11) 3333-4444
+                Ligar: 945 490 359
               </Button>
             </div>
           </div>

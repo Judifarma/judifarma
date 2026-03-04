@@ -11,15 +11,15 @@ const Header = () => {
           <div className="flex items-center space-x-6 text-muted-foreground">
             <div className="flex items-center space-x-2">
               <Phone className="w-4 h-4" />
-              <span>(11) 9999-8888</span>
+              <span>945 490 359</span>
             </div>
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4" />
-              <span>Rua da Saúde, 123 - São Paulo</span>
+              <span>Viana, Luanda - Angola</span>
             </div>
             <div className="flex items-center space-x-2">
               <Clock className="w-4 h-4" />
-              <span>Seg-Sex: 8h-20h | Sáb: 8h-18h</span>
+              <span>Seg-Sex: 08h às 16h</span>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ const Header = () => {
           <a href="#inicio" className="flex items-center">
             <img 
               src={logoJudifarma} 
-              alt="JudiFarma - Vida Saudável" 
+              alt="JudiFarma - Distribuidora Farmacêutica" 
               className="h-20 md:h-28 w-auto"
             />
           </a>
@@ -45,12 +45,12 @@ const Header = () => {
               Sobre
             </a>
             <a href="#contato" className="text-foreground hover:text-primary transition-colors">
-              Contato
+              Contacto
             </a>
           </nav>
 
           <Button variant="medical" size="lg" className="hidden md:inline-flex">
-            Fale Conosco
+            Fale Connosco
           </Button>
         </div>
       </div>
