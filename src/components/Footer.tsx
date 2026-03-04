@@ -24,12 +24,12 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold">JudiFarma</h3>
-                <p className="text-sm opacity-90">Sua Saúde em Primeiro Lugar</p>
+                <p className="text-sm opacity-90">Distribuidora Farmacêutica</p>
               </div>
             </div>
             <p className="text-sm opacity-80 max-w-xs">
-              Há mais de 20 anos cuidando da saúde da sua família com dedicação, 
-              qualidade e confiança. Sua farmácia de confiança no coração da cidade.
+              Distribuidora farmacêutica de referência em Angola, garantindo o fornecimento 
+              eficiente e seguro de medicamentos para farmácias, clínicas e hospitais.
             </p>
             <div className="flex space-x-3">
               <Button variant="outline" size="icon" className="bg-background/10 border-background/20 text-background hover:bg-background/20">
@@ -65,7 +65,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#contato" className="opacity-80 hover:opacity-100 transition-opacity">
-                  Contato
+                  Contacto
                 </a>
               </li>
               <li>
@@ -76,69 +76,68 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Products */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Serviços</h4>
+            <h4 className="text-lg font-semibold">Produtos</h4>
             <ul className="space-y-3 text-sm">
-              <li className="opacity-80">Medicamentos Especiais</li>
-              <li className="opacity-80">Consultas Farmacêuticas</li>
-              <li className="opacity-80">Aferição de Pressão</li>
-              <li className="opacity-80">Produtos Infantis</li>
-              <li className="opacity-80">Saúde & Bem-estar</li>
-              <li className="opacity-80">Programa Fidelidade</li>
+              <li className="opacity-80">Medicamentos Genéricos</li>
+              <li className="opacity-80">Medicamentos de Marca</li>
+              <li className="opacity-80">Produtos Farmacêuticos</li>
+              <li className="opacity-80">Distribuição Nacional</li>
+              <li className="opacity-80">Cadeia de Frio</li>
+              <li className="opacity-80">Controle de Qualidade</li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-6">
-            <h4 className="text-lg font-semibold">Contato</h4>
+            <h4 className="text-lg font-semibold">Contacto</h4>
             <div className="space-y-4 text-sm">
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 flex-shrink-0 mt-0.5 opacity-80" />
                 <div>
-                  <p className="font-medium">(11) 3333-4444</p>
-                  <p className="opacity-80">Seg-Sex: 8h-20h | Sáb: 8h-18h</p>
+                  <p className="font-medium">945 490 359</p>
+                  <p className="opacity-80">Seg-Sex: 08h às 16h</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MessageCircle className="w-5 h-5 flex-shrink-0 mt-0.5 opacity-80" />
                 <div>
-                  <p className="font-medium">(11) 99999-8888</p>
-                  <p className="opacity-80">WhatsApp 24h</p>
+                  <p className="font-medium">945 517 448</p>
+                  <p className="opacity-80">WhatsApp</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 flex-shrink-0 mt-0.5 opacity-80" />
                 <div>
-                  <p className="font-medium">contato@judifarma.com.br</p>
-                  <p className="opacity-80">Resposta em até 2h</p>
+                  <p className="font-medium">judifarma6@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5 opacity-80" />
                 <div>
-                  <p className="font-medium">Rua da Saúde, 123</p>
-                  <p className="opacity-80">São Paulo - SP</p>
+                  <p className="font-medium">Bairro Sanzala, Viana</p>
+                  <p className="opacity-80">Luanda - Angola</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Emergency contact bar */}
+        {/* Contact bar */}
         <div className="border-t border-background/20 py-6">
           <div className="bg-gradient-accent p-6 rounded-xl text-center">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center space-x-3">
                 <Clock className="w-6 h-6 text-accent-foreground" />
                 <div className="text-left">
-                  <p className="font-semibold text-accent-foreground">Atendimento de Emergência 24h</p>
-                  <p className="text-sm text-accent-foreground/80">Sempre prontos para cuidar da sua saúde</p>
+                  <p className="font-semibold text-accent-foreground">Solicite uma Cotação</p>
+                  <p className="text-sm text-accent-foreground/80">Atendemos farmácias, clínicas e hospitais</p>
                 </div>
               </div>
               <Button variant="secondary" size="lg" className="flex items-center gap-2">
                 <MessageCircle className="w-5 h-5" />
-                WhatsApp: (11) 99999-8888
+                WhatsApp: 945 517 448
               </Button>
             </div>
           </div>
@@ -148,12 +147,12 @@ const Footer = () => {
         <div className="border-t border-background/20 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
             <div className="flex items-center space-x-2">
-              <span className="opacity-80">© 2024 JudiFarma. Todos os direitos reservados.</span>
+              <span className="opacity-80">© 2024 JudiFarma. Todos os direitos reservados. NIF: 5002008459</span>
             </div>
             <div className="flex items-center space-x-2 opacity-80">
               <span>Feito com</span>
               <Heart className="w-4 h-4 text-red-400" />
-              <span>para cuidar da sua saúde</span>
+              <span>para a saúde de Angola</span>
             </div>
           </div>
         </div>
