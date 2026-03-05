@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, Truck, Phone } from "lucide-react";
-import heroImage from "@/assets/pharmacy-hero.jpg";
+import heroImage from "@/assets/judifarma-main.jpg";
 
 const Hero = () => {
   return (
