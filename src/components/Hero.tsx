@@ -1,79 +1,140 @@
 import { Button } from "@/components/ui/button";
-import { Shield, Clock, Truck, Phone } from "lucide-react";
+import { Shield, Clock, Truck, Phone, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/judifarma-main.jpg";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section id="inicio" className="relative min-h-[80vh] flex items-center bg-gradient-secondary">
-      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Content */}
-        <div className="space-y-8 animate-fade-in">
-          <div className="space-y-4">
-            <h1 className="text-4xl lg:text-6xl font-bold text-foreground leading-tight">
-              Sua <span className="text-primary">Distribuidora Farmacêutica</span> de Confiança
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-lg">
-              Distribuição rápida de medicamentos genéricos, de marca e produtos farmacêuticos 
-              para farmácias, clínicas e hospitais em toda Angola.
-            </p>
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float-slow" />
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/8 rounded-full blur-3xl animate-float" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 pt-32 pb-20">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Content */}
+          <div className="space-y-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-primary-foreground/90 text-sm font-medium">
+                <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                Distribuidora Farmacêutica de Referência
+              </div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
+                Sua{" "}
+                <span className="text-gradient">Distribuidora Farmacêutica</span>{" "}
+                de Confiança
+              </h1>
+
+              <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg leading-relaxed">
+                Distribuição rápida de medicamentos genéricos, de marca e produtos farmacêuticos
+                para farmácias, clínicas e hospitais em toda Angola.
+              </p>
+            </motion.div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-3 gap-4"
+            >
+              {[
+                { icon: Shield, label: "Qualidade Garantida", color: "from-primary to-primary/60" },
+                { icon: Truck, label: "Entrega em 2-3h", color: "from-accent to-accent/60" },
+                { icon: Clock, label: "Distribuição Nacional", color: "from-secondary to-secondary/60" },
+              ].map((item, i) => (
+                <div key={i} className="text-center group cursor-default">
+                  <div className={`w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <item.icon className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <p className="text-sm font-medium text-primary-foreground/80">{item.label}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-glow hover:shadow-elevated transition-all duration-500 text-base px-8 py-6 rounded-xl group">
+                <Phone className="w-5 h-5 mr-2" />
+                Solicitar Cotação
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+              <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 backdrop-blur-sm text-base px-8 py-6 rounded-xl">
+                Conheça Nosso Portfólio
+              </Button>
+            </motion.div>
           </div>
 
-          {/* Trust indicators */}
-          <div className="grid grid-cols-3 gap-4 animate-scale-in" style={{animationDelay: '0.2s'}}>
-            <div className="text-center hover:animate-bounce-subtle">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Shield className="w-6 h-6 text-primary" />
-              </div>
-              <p className="text-sm font-medium text-foreground">Qualidade Garantida</p>
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl animate-pulse-glow" />
+            <div className="relative">
+              <img
+                src={heroImage}
+                alt="JudiFarma - Distribuidora Farmacêutica em Angola"
+                className="relative z-10 w-full h-[450px] md:h-[550px] object-cover rounded-3xl shadow-elevated"
+              />
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-foreground/30 via-transparent to-transparent z-10" />
             </div>
-            <div className="text-center hover:animate-bounce-subtle">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-2 hover:animate-pulse-glow transition-all duration-300">
-                <Truck className="w-6 h-6 text-accent" />
-              </div>
-              <p className="text-sm font-medium text-foreground">Entrega em 2-3h</p>
-            </div>
-            <div className="text-center hover:animate-bounce-subtle">
-              <div className="w-12 h-12 bg-secondary/30 rounded-full flex items-center justify-center mx-auto mb-2 hover:scale-110 transition-transform duration-300">
-                <Clock className="w-6 h-6 text-primary" />
-              </div>
-              <p className="text-sm font-medium text-foreground">Distribuição Nacional</p>
-            </div>
-          </div>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{animationDelay: '0.4s'}}>
-            <Button variant="medical" size="lg" className="flex items-center gap-2 hover:animate-pulse-glow">
-              <Phone className="w-5 h-5" />
-              Solicitar Cotação
-            </Button>
-            <Button variant="outline" size="lg">
-              Conheça Nosso Portfólio
-            </Button>
-          </div>
+            {/* Floating card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute -bottom-6 -left-6 glass p-5 rounded-2xl shadow-elevated z-20"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 bg-gradient-accent rounded-2xl flex items-center justify-center shadow-lg">
+                  <span className="text-accent-foreground font-bold text-sm">BPD</span>
+                </div>
+                <div>
+                  <p className="font-bold text-foreground">Certificação BPD</p>
+                  <p className="text-sm text-muted-foreground">Boas Práticas de Distribuição</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Stats floating card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, y: -20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute -top-4 -right-4 glass p-4 rounded-2xl shadow-elevated z-20"
+            >
+              <div className="text-center">
+                <p className="text-3xl font-bold text-gradient">2-3h</p>
+                <p className="text-xs text-muted-foreground font-medium">Entrega em Luanda</p>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
+      </div>
 
-        {/* Image */}
-        <div className="relative animate-scale-in" style={{animationDelay: '0.3s'}}>
-          <div className="absolute inset-0 bg-gradient-primary opacity-10 rounded-2xl transform rotate-6 animate-float"></div>
-          <img 
-            src={heroImage} 
-            alt="JudiFarma - Distribuidora Farmacêutica em Angola"
-            className="relative z-10 w-full h-[500px] object-cover rounded-2xl shadow-medium hover:shadow-lg transition-all duration-500 hover:scale-105"
-          />
-          
-          {/* Floating card */}
-          <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-card border border-border z-20 animate-slide-in-right hover:animate-bounce-subtle">
-            <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-sm">BPD</span>
-              </div>
-              <div>
-                <p className="font-semibold text-card-foreground">Certificação BPD</p>
-                <p className="text-sm text-muted-foreground">Boas Práticas de Distribuição</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Bottom wave */}
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V120Z" fill="hsl(var(--background))"/>
+        </svg>
       </div>
     </section>
   );
