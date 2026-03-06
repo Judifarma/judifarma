@@ -191,7 +191,7 @@ const Contact = () => {
                   <MessageCircle className="w-5 h-5 mr-2" />
                   WhatsApp: 945 517 448
                 </Button>
-                <Button variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 py-6 rounded-xl">
+                <Button variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
                   <Phone className="w-5 h-5 mr-2" />
                   Ligar: 945 490 359
                 </Button>
