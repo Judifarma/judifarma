@@ -22,8 +22,8 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "glass shadow-medium py-2" : "bg-transparent py-3"
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white ${
+      scrolled ? "shadow-medium py-2" : "py-3"
     }`}>
       <div className="container mx-auto px-4">
         {/* Top bar */}
@@ -35,7 +35,7 @@ const Header = () => {
               exit={{ opacity: 0, height: 0 }}
               className="hidden md:flex items-center justify-between py-2 text-xs border-b border-border/30 overflow-hidden"
             >
-              <div className="flex items-center gap-6 text-muted-foreground">
+              <div className="flex items-center gap-6 text-foreground/60">
                 <div className="flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-primary" />
                   <span>945 490 359</span>
@@ -68,7 +68,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="relative px-4 py-2 text-sm font-medium text-foreground/80 hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/5 group"
+                className="relative px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 rounded-lg hover:bg-primary/5 group"
               >
                 {link.label}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-primary rounded-full transition-all duration-300 group-hover:w-2/3" />
@@ -82,7 +82,7 @@ const Header = () => {
             </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -107,7 +107,7 @@ const Header = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 }}
                     onClick={() => setMobileOpen(false)}
-                    className="px-4 py-3 text-foreground/80 hover:text-primary hover:bg-primary/5 rounded-lg transition-colors font-medium"
+                    className="px-4 py-3 text-foreground hover:text-primary hover:bg-primary/5 rounded-lg transition-colors font-medium"
                   >
                     {link.label}
                   </motion.a>
