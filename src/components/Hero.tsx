@@ -73,7 +73,7 @@ const Hero = () => {
                 Solicitar Cotação
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg" className="border-white/40 text-white hover:bg-white/10 backdrop-blur-sm text-base px-8 py-6 rounded-xl">
+              <Button variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
                 Conheça Nosso Portfólio
               </Button>
             </motion.div>
