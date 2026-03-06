@@ -133,7 +133,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="mt-24"
         >
-          <div className="relative overflow-hidden rounded-3xl p-12 text-center bg-card border border-border/50 shadow-card">
+          <div className="relative overflow-hidden rounded-3xl p-6 sm:p-12 text-center bg-card border border-border/50 shadow-card">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-accent/3" />
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">

@@ -136,7 +136,7 @@ const Services = () => {
           transition={{ duration: 0.7 }}
           className="mt-20"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-10 md:p-14 text-center">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 sm:p-10 md:p-14 text-center">
             <div className="absolute inset-0">
               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/15 rounded-full blur-3xl" />
