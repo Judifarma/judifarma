@@ -28,7 +28,7 @@ const Hero = () => {
                 Distribuidora Farmacêutica de Referência
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
                 Sua{" "}
                 <span className="text-gradient">Distribuidora Farmacêutica</span>{" "}
                 de Confiança
@@ -45,7 +45,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-3 gap-4"
+              className="grid grid-cols-3 gap-2 sm:gap-4"
             >
               {[
                 { icon: Shield, label: "Qualidade Garantida", color: "from-primary to-primary/60" },
@@ -53,10 +53,10 @@ const Hero = () => {
                 { icon: Clock, label: "Distribuição Nacional", color: "from-secondary to-secondary/60" },
               ].map((item, i) => (
                 <div key={i} className="text-center group cursor-default">
-                  <div className={`w-14 h-14 mx-auto mb-3 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
-                    <item.icon className="w-6 h-6 text-primary-foreground" />
+                  <div className={`w-10 h-10 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                    <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
                   </div>
-                  <p className="text-sm font-medium text-primary-foreground/80">{item.label}</p>
+                  <p className="text-xs sm:text-sm font-medium text-primary-foreground/80">{item.label}</p>
                 </div>
               ))}
             </motion.div>
@@ -91,7 +91,7 @@ const Hero = () => {
               <img
                 src={heroImage}
                 alt="JudiFarma - Distribuidora Farmacêutica em Angola"
-                className="relative z-10 w-full h-[450px] md:h-[550px] object-cover rounded-3xl shadow-elevated"
+                className="relative z-10 w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-3xl shadow-elevated"
               />
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-foreground/30 via-transparent to-transparent z-10" />
             </div>
@@ -101,7 +101,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: -30, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -bottom-6 -left-6 glass p-5 rounded-2xl shadow-elevated z-20"
+              className="absolute -bottom-4 left-0 sm:-bottom-6 sm:-left-6 glass p-3 sm:p-5 rounded-2xl shadow-elevated z-20 max-w-[200px] sm:max-w-none"
             >
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 bg-gradient-accent rounded-2xl flex items-center justify-center shadow-lg">
@@ -119,7 +119,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: 30, y: -20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.8, delay: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute -top-4 -right-4 glass p-4 rounded-2xl shadow-elevated z-20"
+              className="absolute -top-2 right-0 sm:-top-4 sm:-right-4 glass p-3 sm:p-4 rounded-2xl shadow-elevated z-20"
             >
               <div className="text-center">
                 <p className="text-3xl font-bold text-gradient">2-3h</p>

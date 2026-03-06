@@ -160,7 +160,7 @@ const Contact = () => {
             <h3 className="text-xl font-bold text-card-foreground mb-2">Sede - Viana, Luanda</h3>
             <p className="text-muted-foreground mb-1">Bairro Sanzala, sentido Cemitério de Viana, antes das Bombas da Sonangalp</p>
             <p className="text-muted-foreground mb-4">Município de Viana, Província de Luanda</p>
-            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><Phone className="w-4 h-4 text-primary" /> 945 490 359</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> Seg-Sex: 08h às 16h</span>
             </div>
@@ -174,7 +174,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-10 md:p-14 text-center">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 sm:p-10 md:p-14 text-center">
             <div className="absolute inset-0">
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/15 rounded-full blur-3xl" />
