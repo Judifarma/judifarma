@@ -59,7 +59,7 @@ const Header = () => {
             <img
               src={logoJudifarma}
               alt="JudiFarma - Distribuidora Farmacêutica"
-              className={`w-auto transition-all duration-500 ${scrolled ? "h-12 md:h-16" : "h-16 md:h-20"}`}
+              className={`w-auto transition-all duration-500 ${scrolled ? "h-10 md:h-12" : "h-12 md:h-16"}`}
             />
           </a>
 
