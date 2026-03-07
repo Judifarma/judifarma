@@ -73,7 +73,13 @@ const Contact = () => {
                     </div>
                     <div className="space-y-0.5">
                       <h3 className="font-bold text-card-foreground text-sm">{info.title}</h3>
-                      <p className="text-primary font-semibold">{info.details}</p>
+                      {info.link ? (
+                        <a href={info.link} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">
+                          {info.details}
+                        </a>
+                      ) : (
+                        <p className="text-primary font-semibold">{info.details}</p>
+                      )}
                       <p className="text-xs text-muted-foreground">{info.description}</p>
                     </div>
                   </div>
