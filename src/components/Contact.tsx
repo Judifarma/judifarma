@@ -17,9 +17,9 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   const contactInfo = [
-    { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70" },
-    { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70" },
-    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70" },
+    { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
+    { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
+    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
     { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70" }
   ];
 
