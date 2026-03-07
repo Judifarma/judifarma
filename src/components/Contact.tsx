@@ -17,9 +17,9 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   const contactInfo = [
-    { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70" },
-    { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70" },
-    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70" },
+    { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
+    { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
+    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
     { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70" }
   ];
 
@@ -73,7 +73,13 @@ const Contact = () => {
                     </div>
                     <div className="space-y-0.5">
                       <h3 className="font-bold text-card-foreground text-sm">{info.title}</h3>
-                      <p className="text-primary font-semibold">{info.details}</p>
+                      {info.link ? (
+                        <a href={info.link} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold hover:underline">
+                          {info.details}
+                        </a>
+                      ) : (
+                        <p className="text-primary font-semibold">{info.details}</p>
+                      )}
                       <p className="text-xs text-muted-foreground">{info.description}</p>
                     </div>
                   </div>
