@@ -1,9 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, Truck, Phone, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/judifarma-main.jpg";
-import { motion } from "framer-motion";
+import teamImage1 from "@/assets/team-1.jpg";
+import teamImage2 from "@/assets/team-2.jpg";
+import teamImage3 from "@/assets/team-3.jpg";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const heroImages = [heroImage, teamImage1, teamImage2, teamImage3];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
       {/* Animated background elements */}
@@ -87,13 +101,30 @@ const Hero = () => {
             className="relative"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl animate-pulse-glow" />
-            <div className="relative">
-              <img
-                src={heroImage}
-                alt="JudiFarma - Distribuidora Farmacêutica em Angola"
-                className="relative z-10 w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover rounded-3xl shadow-elevated"
-              />
+            <div className="relative overflow-hidden rounded-3xl shadow-elevated">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentImage}
+                  src={heroImages[currentImage]}
+                  alt="JudiFarma - Distribuidora Farmacêutica em Angola"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative z-10 w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover"
+                />
+              </AnimatePresence>
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-foreground/30 via-transparent to-transparent z-10" />
+              {/* Slide indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {heroImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImage(i)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${i === currentImage ? "bg-white w-6" : "bg-white/50"}`}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Floating card */}
