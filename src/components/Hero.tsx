@@ -102,15 +102,16 @@ const Hero = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl animate-pulse-glow" />
             <div className="relative overflow-hidden rounded-3xl shadow-elevated">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="sync">
                 <motion.img
                   key={currentImage}
                   src={heroImages[currentImage]}
                   alt="JudiFarma - Distribuidora Farmacêutica em Angola"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="absolute inset-0 z-10 w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover"
                   className="relative z-10 w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover"
                 />
               </AnimatePresence>
