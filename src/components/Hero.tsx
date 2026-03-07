@@ -8,6 +8,16 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
+  const heroImages = [heroImage, teamImage1, teamImage2, teamImage3];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-hero">
       {/* Animated background elements */}
