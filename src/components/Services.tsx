@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Pill,
@@ -11,6 +12,9 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import product1 from "@/assets/product-1.jpeg";
+import product2 from "@/assets/product-2.jpeg";
+import product3 from "@/assets/product-3.jpeg";
 
 const Services = () => {
   const services = [
