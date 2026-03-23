@@ -151,11 +151,19 @@ const Services = () => {
           transition={{ duration: 0.7 }}
           className="mt-20"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-hero p-6 sm:p-10 md:p-14 text-center">
-            <div className="absolute inset-0">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/15 rounded-full blur-3xl" />
-            </div>
+          <div className="relative overflow-hidden rounded-3xl p-6 sm:p-10 md:p-14 text-center">
+            {/* Slideshow background */}
+            {ctaImages.map((img, i) => (
+              <div
+                key={i}
+                className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                style={{ opacity: currentSlide === i ? 1 : 0 }}
+              >
+                <img src={img} alt="" className="w-full h-full object-cover" />
+              </div>
+            ))}
+            {/* Dark overlay */}
+            <div className="absolute inset-0 bg-black/60" />
             <div className="relative z-10 max-w-2xl mx-auto">
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/20 flex items-center justify-center">
                 <Clock className="w-8 h-8 text-primary-foreground" />
