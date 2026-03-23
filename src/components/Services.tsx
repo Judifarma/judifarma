@@ -82,7 +82,7 @@ const Services = () => {
             O que oferecemos
           </span>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-5">
-            Nossos Serviços
+            Nossos Produtos
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Garantimos o fornecimento eficiente e seguro de medicamentos, com distribuição
