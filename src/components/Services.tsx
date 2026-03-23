@@ -163,7 +163,7 @@ const Services = () => {
               </div>
             ))}
             {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/95" />
+            <div className="absolute inset-0 bg-[hsl(220,60%,10%)]/95" />
             <div className="relative z-10 max-w-2xl mx-auto">
               <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/20 flex items-center justify-center">
                 <Clock className="w-8 h-8 text-primary-foreground" />
