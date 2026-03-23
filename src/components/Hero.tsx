@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const heroImages = [heroImage, teamImage1, teamImage2, teamImage3];
+  const heroImages = [teamImage2, teamImage3];
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
