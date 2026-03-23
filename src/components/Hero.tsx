@@ -100,18 +100,17 @@ const Hero = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl blur-2xl animate-pulse-glow" />
             <div className="relative overflow-hidden rounded-3xl shadow-elevated h-[300px] sm:h-[450px] md:h-[550px]">
-              <AnimatePresence mode="sync">
+              {heroImages.map((img, i) => (
                 <motion.img
-                  key={currentImage}
-                  src={heroImages[currentImage]}
+                  key={i}
+                  src={img}
                   alt="JudiFarma - Distribuidora Farmacêutica em Angola"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  animate={{ opacity: currentImage === i ? 1 : 0 }}
                   transition={{ duration: 1.5, ease: "easeInOut" }}
-                  className="absolute inset-0 z-10 w-full h-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  style={{ zIndex: currentImage === i ? 2 : 1 }}
                 />
-              </AnimatePresence>
+              ))}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-foreground/30 via-transparent to-transparent z-10" />
               {/* Slide indicators */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
