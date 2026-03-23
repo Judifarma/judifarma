@@ -1,14 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Shield, Clock, Truck, Phone, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/judifarma-main.jpg";
-import teamImage1 from "@/assets/team-1.jpg";
 import teamImage2 from "@/assets/team-2.jpg";
 import teamImage3 from "@/assets/team-3.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const Hero = () => {
-  const heroImages = [heroImage, teamImage1, teamImage2, teamImage3];
+  const heroImages = [teamImage2, teamImage3];
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
