@@ -16,7 +16,18 @@ import product1 from "@/assets/product-1.jpeg";
 import product2 from "@/assets/product-2.jpeg";
 import product3 from "@/assets/product-3.jpeg";
 
+const ctaImages = [product1, product2, product3];
+
 const Services = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % ctaImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const services = [
     {
       icon: Pill,
