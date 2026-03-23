@@ -35,10 +35,6 @@ const Hero = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-primary-foreground/90 text-sm font-medium">
-                <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                Distribuidora Farmacêutica de Referência
-              </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
                 Sua{" "}
