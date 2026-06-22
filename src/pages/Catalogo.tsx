@@ -267,9 +267,9 @@ const Catalogo = () => {
               </button>
               <div className="grid md:grid-cols-2">
                 <div className="aspect-square md:aspect-auto bg-muted/30 overflow-hidden flex items-center justify-center">
-                  {resolveImage(active.image_url) ? (
+                  {resolveImage(active.image_url, active.slug) ? (
                     <img
-                      src={resolveImage(active.image_url)!}
+                      src={resolveImage(active.image_url, active.slug)!}
                       alt={active.name}
                       className="w-full h-full object-cover"
                     />
