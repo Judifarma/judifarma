@@ -14,6 +14,13 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
+import { toast } from "sonner";
+
+const SOCIAL_LINKS = {
+  instagram: "https://instagram.com/judifarma",
+  facebook: "https://facebook.com/judifarma",
+};
 
 const Contact = () => {
   const contactInfo = [
