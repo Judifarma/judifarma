@@ -175,7 +175,7 @@ const Catalogo = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filtered.map((p, i) => {
-                const img = resolveImage(p.image_url);
+                const img = resolveImage(p.image_url, p.slug);
                 return (
                   <motion.article
                     key={p.id}
