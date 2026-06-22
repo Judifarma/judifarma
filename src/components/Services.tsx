@@ -174,7 +174,7 @@ const Services = () => {
                 Entrega rápida em Luanda em 2-3 horas. Entre em contacto connosco agora!
               </p>
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
-                <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">WhatsApp: 945 517 448</a>
+                <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">WhatsApp: +244 945 517 448</a>
               </Button>
             </div>
           </div>

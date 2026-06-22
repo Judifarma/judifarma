@@ -37,8 +37,8 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
-    { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
+    { icon: Phone, title: "Telefone", details: "+244 945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
+    { icon: MessageCircle, title: "WhatsApp", details: "+244 945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
     { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
     { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
   ];
@@ -193,7 +193,7 @@ const Contact = () => {
             <p className="text-muted-foreground mb-1">Bairro Sanzala, sentido Cemitério de Viana, antes das Bombas da Sonangalp</p>
             <p className="text-muted-foreground mb-4">Município de Viana, Província de Luanda</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-muted-foreground">
-              <span className="flex items-center gap-1.5"><Phone className="w-4 h-4 text-primary" /> 945 490 359</span>
+              <span className="flex items-center gap-1.5"><Phone className="w-4 h-4 text-primary" /> +244 945 490 359</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> Seg-Sex: 08h às 16h</span>
             </div>
           </div>
@@ -222,13 +222,13 @@ const Contact = () => {
                 <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
                   <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    WhatsApp: 945 517 448
+                    WhatsApp: +244 945 517 448
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
                   <a href="tel:+244945490359">
                     <Phone className="w-5 h-5 mr-2" />
-                    Ligar: 945 490 359
+                    Ligar: +244 945 490 359
                   </a>
                 </Button>
               </div>
