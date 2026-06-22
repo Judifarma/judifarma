@@ -14,13 +14,33 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState, FormEvent } from "react";
+import { toast } from "sonner";
+
+const SOCIAL_LINKS = {
+  instagram: "https://instagram.com/judifarma",
+  facebook: "https://facebook.com/judifarma",
+};
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.message) {
+      toast.error("Preencha pelo menos o nome e a descrição do pedido.");
+      return;
+    }
+    const text = `*Pedido de Cotação - JudiFarma*%0A%0A*Nome/Empresa:* ${form.name}%0A*E-mail:* ${form.email}%0A*Telefone:* ${form.phone}%0A*Tipo de Instituição:* ${form.type}%0A%0A*Descrição:*%0A${form.message}`;
+    window.open(`https://wa.me/244945517448?text=${text}`, "_blank");
+    toast.success("A abrir o WhatsApp com o seu pedido...");
+  };
+
   const contactInfo = [
     { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
     { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
     { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
-    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70" }
+    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
   ];
 
   return (
@@ -91,10 +111,13 @@ const Contact = () => {
             <div className="card-premium p-5">
               <h4 className="font-bold text-card-foreground text-sm mb-3">Redes Sociais</h4>
               <div className="flex gap-3">
-                {[Instagram, Facebook].map((Icon, i) => (
-                  <button key={i} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                {[
+                  { Icon: Instagram, href: SOCIAL_LINKS.instagram, label: "Instagram" },
+                  { Icon: Facebook, href: SOCIAL_LINKS.facebook, label: "Facebook" },
+                ].map(({ Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all duration-300">
                     <Icon className="w-5 h-5" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -113,40 +136,43 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-card-foreground mb-1">Solicitar Cotação</h3>
                 <p className="text-sm text-muted-foreground">Preencha o formulário e entraremos em contacto.</p>
               </div>
-              <div className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Nome / Empresa</label>
-                    <Input placeholder="Nome da sua empresa ou instituição" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Nome da sua empresa ou instituição" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">E-mail</label>
-                    <Input type="email" placeholder="seu@email.com" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="seu@email.com" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Telefone</label>
-                    <Input placeholder="9XX XXX XXX" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="9XX XXX XXX" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Tipo de Instituição</label>
-                    <Input placeholder="Farmácia, Clínica, Hospital..." className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} placeholder="Farmácia, Clínica, Hospital..." className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-card-foreground">Descrição do Pedido</label>
                   <Textarea
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Descreva os medicamentos ou produtos que necessita..."
                     className="min-h-[130px] rounded-xl border-border/50 focus:border-primary/50"
                   />
                 </div>
-                <Button size="lg" className="w-full bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base py-6 rounded-xl group">
+                <Button type="submit" size="lg" className="w-full bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base py-6 rounded-xl group">
                   <Send className="w-5 h-5 mr-2" />
                   Enviar Pedido de Cotação
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </div>
+              </form>
             </div>
           </motion.div>
         </div>
@@ -193,13 +219,17 @@ const Contact = () => {
                 Entre em contacto connosco pelo WhatsApp ou ligue directamente para solicitar uma entrega rápida.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  WhatsApp: 945 517 448
+                <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
+                  <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    WhatsApp: 945 517 448
+                  </a>
                 </Button>
-                <Button variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
-                  <Phone className="w-5 h-5 mr-2" />
-                  Ligar: 945 490 359
+                <Button asChild variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
+                  <a href="tel:+244945490359">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Ligar: 945 490 359
+                  </a>
                 </Button>
               </div>
             </div>

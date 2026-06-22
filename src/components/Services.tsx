@@ -131,9 +131,11 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-                <Button variant="ghost" className="w-full justify-between text-primary hover:bg-primary/5 group/btn">
-                  Saiba Mais
-                  <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                <Button asChild variant="ghost" className="w-full justify-between text-primary hover:bg-primary/5 group/btn">
+                  <a href="#contato">
+                    Saiba Mais
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
                 </Button>
               </motion.div>
             );
@@ -171,8 +173,8 @@ const Services = () => {
               <p className="text-primary-foreground/70 mb-8 text-lg">
                 Entrega rápida em Luanda em 2-3 horas. Entre em contacto connosco agora!
               </p>
-              <Button size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
-                WhatsApp: 945 517 448
+              <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
+                <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">WhatsApp: 945 517 448</a>
               </Button>
             </div>
           </div>

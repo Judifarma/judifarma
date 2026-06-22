@@ -81,9 +81,11 @@ const About = () => {
                 </div>
               </div>
 
-              <Button size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base px-8 py-6 rounded-xl group">
-                Solicitar Cotação
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base px-8 py-6 rounded-xl group">
+                <a href="#contato">
+                  Solicitar Cotação
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
             </div>
           </motion.div>
