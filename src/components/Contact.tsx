@@ -111,10 +111,13 @@ const Contact = () => {
             <div className="card-premium p-5">
               <h4 className="font-bold text-card-foreground text-sm mb-3">Redes Sociais</h4>
               <div className="flex gap-3">
-                {[Instagram, Facebook].map((Icon, i) => (
-                  <button key={i} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all duration-300">
+                {[
+                  { Icon: Instagram, href: SOCIAL_LINKS.instagram, label: "Instagram" },
+                  { Icon: Facebook, href: SOCIAL_LINKS.facebook, label: "Facebook" },
+                ].map(({ Icon, href, label }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-all duration-300">
                     <Icon className="w-5 h-5" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -133,40 +136,43 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-card-foreground mb-1">Solicitar Cotação</h3>
                 <p className="text-sm text-muted-foreground">Preencha o formulário e entraremos em contacto.</p>
               </div>
-              <div className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Nome / Empresa</label>
-                    <Input placeholder="Nome da sua empresa ou instituição" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Nome da sua empresa ou instituição" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">E-mail</label>
-                    <Input type="email" placeholder="seu@email.com" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="seu@email.com" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Telefone</label>
-                    <Input placeholder="9XX XXX XXX" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="9XX XXX XXX" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-semibold text-card-foreground">Tipo de Instituição</label>
-                    <Input placeholder="Farmácia, Clínica, Hospital..." className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <Input value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} placeholder="Farmácia, Clínica, Hospital..." className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-card-foreground">Descrição do Pedido</label>
                   <Textarea
+                    required
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Descreva os medicamentos ou produtos que necessita..."
                     className="min-h-[130px] rounded-xl border-border/50 focus:border-primary/50"
                   />
                 </div>
-                <Button size="lg" className="w-full bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base py-6 rounded-xl group">
+                <Button type="submit" size="lg" className="w-full bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base py-6 rounded-xl group">
                   <Send className="w-5 h-5 mr-2" />
                   Enviar Pedido de Cotação
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
-              </div>
+              </form>
             </div>
           </motion.div>
         </div>
