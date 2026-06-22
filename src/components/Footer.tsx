@@ -79,8 +79,8 @@ const Footer = () => {
             <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">Contacto</h4>
             <div className="space-y-4 text-sm">
               {[
-                { icon: Phone, primary: "945 490 359", secondary: "Seg-Sex: 08h às 16h" },
-                { icon: MessageCircle, primary: "945 517 448", secondary: "WhatsApp" },
+                { icon: Phone, primary: "+244 945 490 359", secondary: "Seg-Sex: 08h às 16h" },
+                { icon: MessageCircle, primary: "+244 945 517 448", secondary: "WhatsApp" },
                 { icon: Mail, primary: "judifarma6@gmail.com" },
                 { icon: MapPin, primary: "Bairro Sanzala, Viana", secondary: "Luanda - Angola" }
               ].map((item, i) => (
@@ -112,7 +112,7 @@ const Footer = () => {
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-lg rounded-xl px-6">
                 <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
-                  WhatsApp: 945 517 448
+                  WhatsApp: +244 945 517 448
                 </a>
               </Button>
             </div>
