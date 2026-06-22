@@ -77,8 +77,8 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button variant="medical" size="lg" className="hidden md:inline-flex shadow-soft hover:shadow-glow transition-all duration-500">
-              Fale Connosco
+            <Button asChild variant="medical" size="lg" className="hidden md:inline-flex shadow-soft hover:shadow-glow transition-all duration-500">
+              <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">Fale Connosco</a>
             </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -112,8 +112,8 @@ const Header = () => {
                     {link.label}
                   </motion.a>
                 ))}
-                <Button variant="medical" size="lg" className="mt-2">
-                  Fale Connosco
+                <Button asChild variant="medical" size="lg" className="mt-2">
+                  <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>Fale Connosco</a>
                 </Button>
               </nav>
             </motion.div>
