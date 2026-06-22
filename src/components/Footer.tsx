@@ -35,7 +35,7 @@ const Footer = () => {
               {[
                 { Icon: Instagram, href: "https://instagram.com/judifarma", label: "Instagram" },
                 { Icon: Facebook, href: "https://facebook.com/judifarma", label: "Facebook" },
-                { Icon: MessageCircle, href: "https://wa.me/244945517448?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es", label: "WhatsApp" },
+                { Icon: MessageCircle, href: "https://wa.me/244945517448", label: "WhatsApp" },
               ].map(({ Icon, href, label }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="w-10 h-10 rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/15 transition-all duration-300">
                   <Icon className="w-4 h-4 opacity-70" />
@@ -110,7 +110,7 @@ const Footer = () => {
                 </div>
               </div>
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-lg rounded-xl px-6">
-                <a href="https://wa.me/244945517448?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener noreferrer">
+                <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp: +244 945 517 448
                 </a>
