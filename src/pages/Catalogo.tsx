@@ -175,7 +175,7 @@ const Catalogo = () => {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filtered.map((p, i) => {
-                const img = resolveImage(p.image_url);
+                const img = resolveImage(p.image_url, p.slug);
                 return (
                   <motion.article
                     key={p.id}
@@ -267,9 +267,9 @@ const Catalogo = () => {
               </button>
               <div className="grid md:grid-cols-2">
                 <div className="aspect-square md:aspect-auto bg-muted/30 overflow-hidden flex items-center justify-center">
-                  {resolveImage(active.image_url) ? (
+                  {resolveImage(active.image_url, active.slug) ? (
                     <img
-                      src={resolveImage(active.image_url)!}
+                      src={resolveImage(active.image_url, active.slug)!}
                       alt={active.name}
                       className="w-full h-full object-cover"
                     />
