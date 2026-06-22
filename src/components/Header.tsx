@@ -15,10 +15,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "#inicio", label: "Início" },
-    { href: "#servicos", label: "Produtos" },
-    { href: "#sobre", label: "Sobre" },
-    { href: "#contato", label: "Contacto" },
+    { href: "/#inicio", label: "Início" },
+    { href: "/catalogo", label: "Produtos" },
+    { href: "/#sobre", label: "Sobre" },
+    { href: "/#contato", label: "Contacto" },
   ];
 
   return (
