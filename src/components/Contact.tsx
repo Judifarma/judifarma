@@ -23,11 +23,24 @@ const SOCIAL_LINKS = {
 };
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.message) {
+      toast.error("Preencha pelo menos o nome e a descrição do pedido.");
+      return;
+    }
+    const text = `*Pedido de Cotação - JudiFarma*%0A%0A*Nome/Empresa:* ${form.name}%0A*E-mail:* ${form.email}%0A*Telefone:* ${form.phone}%0A*Tipo de Instituição:* ${form.type}%0A%0A*Descrição:*%0A${form.message}`;
+    window.open(`https://wa.me/244945517448?text=${text}`, "_blank");
+    toast.success("A abrir o WhatsApp com o seu pedido...");
+  };
+
   const contactInfo = [
     { icon: Phone, title: "Telefone", details: "945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
     { icon: MessageCircle, title: "WhatsApp", details: "945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
     { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
-    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70" }
+    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
   ];
 
   return (
