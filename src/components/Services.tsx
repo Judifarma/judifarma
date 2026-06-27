@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import product1 from "@/assets/product-1.jpeg";
 import product2 from "@/assets/product-2.jpeg";
 import product3 from "@/assets/product-3.jpeg";
@@ -20,6 +21,7 @@ import product3 from "@/assets/product-3.jpeg";
 const ctaImages = [product1, product2, product3];
 
 const Services = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -29,56 +31,26 @@ const Services = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const services = [
-    {
-      icon: Pill,
-      title: "Medicamentos Genéricos",
-      description: "Distribuição de medicamentos genéricos de qualidade certificada para farmácias, clínicas e hospitais.",
-      features: ["Produtos certificados", "Preços competitivos", "Stock permanente"],
-      gradient: "from-primary/10 to-primary/5",
-      iconBg: "from-primary to-primary/70"
-    },
-    {
-      icon: Package,
-      title: "Medicamentos de Marca",
-      description: "Portfólio completo de medicamentos de marca com garantia de procedência e qualidade.",
-      features: ["Marcas reconhecidas", "Garantia de origem", "Variedade de produtos"],
-      gradient: "from-accent/10 to-accent/5",
-      iconBg: "from-accent to-accent/70"
-    },
-    {
-      icon: Truck,
-      title: "Distribuição Rápida",
-      description: "Entrega em Luanda em 2-3 horas e distribuição nacional com logística eficiente.",
-      features: ["Entrega em 2-3h em Luanda", "Cobertura nacional", "Rastreamento de entregas"],
-      gradient: "from-secondary/10 to-secondary/5",
-      iconBg: "from-secondary to-secondary/70"
-    },
-    {
-      icon: Thermometer,
-      title: "Cadeia de Frio Controlada",
-      description: "Monitoramento rigoroso de temperatura para garantir a integridade dos medicamentos.",
-      features: ["Monitoramento contínuo", "Controle de temperatura", "Conformidade regulatória"],
-      gradient: "from-primary/10 to-accent/5",
-      iconBg: "from-primary to-accent/70"
-    },
-    {
-      icon: Warehouse,
-      title: "Armazéns Próprios",
-      description: "Infraestrutura de armazenamento moderna com condições ideais para todos os tipos de medicamentos.",
-      features: ["Armazéns certificados", "Controle de validade", "Gestão de stock eficiente"],
-      gradient: "from-accent/10 to-secondary/5",
-      iconBg: "from-accent to-secondary/70"
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Controle de Qualidade",
-      description: "Certificação em Boas Práticas de Distribuição (BPD/GDP) e política de qualidade documentada.",
-      features: ["Certificação BPD/GDP", "Política de qualidade", "Rastreabilidade total"],
-      gradient: "from-secondary/10 to-primary/5",
-      iconBg: "from-secondary to-primary/70"
-    }
-  ];
+  const serviceKeys = ["generics", "brand", "delivery", "cold", "warehouse", "quality"] as const;
+  const serviceMeta = {
+    generics: { icon: Pill, iconBg: "from-primary to-primary/70" },
+    brand: { icon: Package, iconBg: "from-accent to-accent/70" },
+    delivery: { icon: Truck, iconBg: "from-secondary to-secondary/70" },
+    cold: { icon: Thermometer, iconBg: "from-primary to-accent/70" },
+    warehouse: { icon: Warehouse, iconBg: "from-accent to-secondary/70" },
+    quality: { icon: ClipboardCheck, iconBg: "from-secondary to-primary/70" },
+  } as const;
+  const services = serviceKeys.map((k) => ({
+    icon: serviceMeta[k].icon,
+    iconBg: serviceMeta[k].iconBg,
+    title: t(`services.items.${k}.title`),
+    description: t(`services.items.${k}.description`),
+    features: [
+      t(`services.items.${k}.f1`),
+      t(`services.items.${k}.f2`),
+      t(`services.items.${k}.f3`),
+    ],
+  }));
 
   return (
     <section id="servicos" className="section-padding bg-background relative overflow-hidden">
@@ -95,11 +67,10 @@ const Services = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-5">
-            Nossos Produtos
+            {t("services.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Garantimos o fornecimento eficiente e seguro de medicamentos, com distribuição
-            rápida e qualidade certificada em toda Angola.
+            {t("services.subtitle")}
           </p>
         </motion.div>
 
@@ -134,7 +105,7 @@ const Services = () => {
                 </ul>
                 <Button asChild variant="ghost" className="w-full justify-between text-primary hover:bg-primary/5 group/btn">
                   <Link to="/catalogo">
-                    Saiba Mais
+                    {t("common.knowMore")}
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
@@ -169,10 +140,10 @@ const Services = () => {
                 <Clock className="w-8 h-8 text-primary-foreground" />
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-                Precisa de Medicamentos com Urgência?
+                {t("services.urgentTitle")}
               </h3>
               <p className="text-primary-foreground/70 mb-8 text-lg">
-                Entrega rápida em Luanda em 2-3 horas. Entre em contacto connosco agora!
+                {t("services.urgentSubtitle")}
               </p>
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
                 <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">WhatsApp: +244 945 517 448</a>

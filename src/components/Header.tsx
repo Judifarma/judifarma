@@ -3,8 +3,11 @@ import { Phone, MapPin, Clock, Menu, X } from "lucide-react";
 import logoJudifarma from "@/assets/logo-judifarma.png";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
+  const { t } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -15,10 +18,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { href: "/", label: "Início" },
-    { href: "/catalogo", label: "Produtos" },
-    { href: "/sobre", label: "Sobre" },
-    { href: "/contacto", label: "Contacto" },
+    { href: "/", label: t("nav.home") },
+    { href: "/catalogo", label: t("nav.products") },
+    { href: "/sobre", label: t("nav.about") },
+    { href: "/contacto", label: t("nav.contact") },
   ];
 
   return (
@@ -46,7 +49,7 @@ const Header = () => {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-primary" />
-                  <span>Seg-Sex: 08h às 16h</span>
+                  <span>{t("contact.hours")}</span>
                 </div>
               </div>
             </motion.div>
@@ -76,9 +79,10 @@ const Header = () => {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <LanguageSwitcher className="hidden sm:inline-flex" />
             <Button asChild variant="medical" size="lg" className="hidden md:inline-flex shadow-soft hover:shadow-glow transition-all duration-500">
-              <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">Fale Connosco</a>
+              <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">{t("nav.contactUs")}</a>
             </Button>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -113,8 +117,11 @@ const Header = () => {
                   </motion.a>
                 ))}
                 <Button asChild variant="medical" size="lg" className="mt-2">
-                  <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>Fale Connosco</a>
+                  <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>{t("nav.contactUs")}</a>
                 </Button>
+                <div className="mt-2 flex justify-center sm:hidden">
+                  <LanguageSwitcher />
+                </div>
               </nav>
             </motion.div>
           )}

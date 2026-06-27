@@ -16,6 +16,7 @@ import {
 import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = {
   instagram: "https://instagram.com/judifarma",
@@ -23,24 +24,25 @@ const SOCIAL_LINKS = {
 };
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.message) {
-      toast.error("Preencha pelo menos o nome e a descrição do pedido.");
+      toast.error(t("contact.errorRequired"));
       return;
     }
-    const text = `*Pedido de Cotação - JudiFarma*%0A%0A*Nome/Empresa:* ${form.name}%0A*E-mail:* ${form.email}%0A*Telefone:* ${form.phone}%0A*Tipo de Instituição:* ${form.type}%0A%0A*Descrição:*%0A${form.message}`;
+    const text = `*${t("contact.formTitle")} - JudiFarma*%0A%0A*${t("contact.name")}:* ${form.name}%0A*${t("contact.email")}:* ${form.email}%0A*${t("contact.phone")}:* ${form.phone}%0A*${t("contact.typeInst")}:* ${form.type}%0A%0A*${t("contact.request")}:*%0A${form.message}`;
     window.open(`https://wa.me/244945517448?text=${text}`, "_blank");
-    toast.success("A abrir o WhatsApp com o seu pedido...");
+    toast.success(t("contact.opening"));
   };
 
   const contactInfo = [
-    { icon: Phone, title: "Telefone", details: "+244 945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
-    { icon: MessageCircle, title: "WhatsApp", details: "+244 945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
-    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
-    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
+    { icon: Phone, title: t("contact.phone"), details: "+244 945 490 359", description: t("contact.hours"), gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
+    { icon: MessageCircle, title: t("contact.whatsapp"), details: "+244 945 517 448", description: t("contact.whatsappDesc"), gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
+    { icon: Mail, title: t("contact.email"), details: "judifarma6@gmail.com", description: t("contact.emailDesc"), gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
+    { icon: MapPin, title: t("contact.address"), details: t("contact.addressDetail"), description: t("contact.addressDesc"), gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
   ];
 
   return (
@@ -56,11 +58,10 @@ const Contact = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-5">
-            Entre em Contacto
+            {t("contact.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Solicite uma cotação ou entre em contacto connosco. Estamos prontos para
-            atender farmácias, clínicas e hospitais em toda Angola.
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -106,7 +107,7 @@ const Contact = () => {
 
             {/* Social Media */}
             <div className="card-premium p-5">
-              <h4 className="font-bold text-card-foreground text-sm mb-3">Redes Sociais</h4>
+              <h4 className="font-bold text-card-foreground text-sm mb-3">{t("contact.social")}</h4>
               <div className="flex gap-3">
                 {[
                   { Icon: Instagram, href: SOCIAL_LINKS.instagram, label: "Instagram" },
@@ -130,43 +131,43 @@ const Contact = () => {
           >
             <div className="card-premium p-8">
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-card-foreground mb-1">Solicitar Cotação</h3>
-                <p className="text-sm text-muted-foreground">Preencha o formulário e entraremos em contacto.</p>
+                <h3 className="text-2xl font-bold text-card-foreground mb-1">{t("contact.formTitle")}</h3>
+                <p className="text-sm text-muted-foreground">{t("contact.formSub")}</p>
               </div>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-card-foreground">Nome / Empresa</label>
-                    <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Nome da sua empresa ou instituição" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <label className="text-sm font-semibold text-card-foreground">{t("contact.name")}</label>
+                    <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={t("contact.namePh")} className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-card-foreground">E-mail</label>
-                    <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="seu@email.com" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <label className="text-sm font-semibold text-card-foreground">{t("contact.email")}</label>
+                    <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder={t("contact.emailPh")} className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-card-foreground">Telefone</label>
-                    <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="9XX XXX XXX" className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <label className="text-sm font-semibold text-card-foreground">{t("contact.phone")}</label>
+                    <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder={t("contact.phonePh")} className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-card-foreground">Tipo de Instituição</label>
-                    <Input value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} placeholder="Farmácia, Clínica, Hospital..." className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
+                    <label className="text-sm font-semibold text-card-foreground">{t("contact.typeInst")}</label>
+                    <Input value={form.type} onChange={(e) => setForm({ ...form, type: e.target.value })} placeholder={t("contact.typeInstPh")} className="rounded-xl border-border/50 focus:border-primary/50 h-12" />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-semibold text-card-foreground">Descrição do Pedido</label>
+                  <label className="text-sm font-semibold text-card-foreground">{t("contact.request")}</label>
                   <Textarea
                     required
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Descreva os medicamentos ou produtos que necessita..."
+                    placeholder={t("contact.requestPh")}
                     className="min-h-[130px] rounded-xl border-border/50 focus:border-primary/50"
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base py-6 rounded-xl group">
                   <Send className="w-5 h-5 mr-2" />
-                  Enviar Pedido de Cotação
+                  {t("contact.submit")}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </form>
@@ -186,12 +187,12 @@ const Contact = () => {
             <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-primary flex items-center justify-center shadow-lg">
               <MapPin className="w-7 h-7 text-primary-foreground" />
             </div>
-            <h3 className="text-xl font-bold text-card-foreground mb-2">Sede - Viana, Luanda</h3>
-            <p className="text-muted-foreground mb-1">Bairro Sanzala, sentido Cemitério de Viana, antes das Bombas da Sonangalp</p>
-            <p className="text-muted-foreground mb-4">Município de Viana, Província de Luanda</p>
+            <h3 className="text-xl font-bold text-card-foreground mb-2">{t("contact.hqTitle")}</h3>
+            <p className="text-muted-foreground mb-1">{t("contact.hqAddr")}</p>
+            <p className="text-muted-foreground mb-4">{t("contact.hqMuni")}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><Phone className="w-4 h-4 text-primary" /> +244 945 490 359</span>
-              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> Seg-Sex: 08h às 16h</span>
+              <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-primary" /> {t("contact.hours")}</span>
             </div>
           </div>
         </motion.div>
@@ -210,10 +211,10 @@ const Contact = () => {
             </div>
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-                Precisa de Medicamentos com Urgência?
+                {t("contact.urgentTitle")}
               </h3>
               <p className="text-primary-foreground/70 mb-8 max-w-2xl mx-auto text-lg">
-                Entre em contacto connosco pelo WhatsApp ou ligue directamente para solicitar uma entrega rápida.
+                {t("contact.urgentSub")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
@@ -225,7 +226,7 @@ const Contact = () => {
                 <Button asChild variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
                   <a href="tel:+244945490359">
                     <Phone className="w-5 h-5 mr-2" />
-                    Ligar: +244 945 490 359
+                    {t("contact.call")}: +244 945 490 359
                   </a>
                 </Button>
               </div>
