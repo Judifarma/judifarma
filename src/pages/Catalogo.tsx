@@ -238,27 +238,34 @@ const Catalogo = () => {
 
             {/* Image column */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 relative"
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 relative transform-gpu"
             >
+              {/* Halo: static on mobile / reduced-motion, gentle pulse on desktop */}
               <motion.div
-                animate={{ scale: [1, 1.05, 1], opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl"
+                aria-hidden
+                animate={lightMotion ? undefined : { scale: [1, 1.03, 1], opacity: [0.75, 1, 0.75] }}
+                transition={lightMotion ? undefined : { duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                style={{ willChange: lightMotion ? "auto" : "transform, opacity" }}
+                className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl pointer-events-none transform-gpu"
               />
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5"
+                animate={lightMotion ? undefined : { y: [0, -8, 0] }}
+                transition={lightMotion ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                style={{ willChange: lightMotion ? "auto" : "transform" }}
+                className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5 transform-gpu"
               >
                 <img
                   src={dynadolHero.url}
                   alt="Família feliz com produtos Dynadol — comprimidos e xarope"
                   className="w-full h-auto object-cover"
                   loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
+
                 {/* Shimmer sweep */}
                 <motion.div
                   initial={{ x: "-120%" }}
