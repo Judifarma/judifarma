@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   ArrowLeft,
   Search,
@@ -43,6 +43,18 @@ const buildQuote = (p: Product) =>
   )}`;
 
 const Catalogo = () => {
+  const prefersReducedMotion = useReducedMotion();
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(hover: none), (max-width: 768px)");
+    const update = () => setIsCoarsePointer(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+  const lightMotion = prefersReducedMotion || isCoarsePointer;
+
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
@@ -90,19 +102,10 @@ const Catalogo = () => {
 
       {/* Fancy Dynadol Hero */}
       <section className="relative overflow-hidden pt-40 lg:pt-48 pb-16 lg:pb-24 bg-white">
-        {/* Decorative ambient */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none"
-        />
+        {/* Decorative ambient — static, no continuous animation (cheap paint, no jank) */}
+        <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none opacity-0 animate-fade-in" style={{ animationDuration: "1.2s", animationFillMode: "forwards" }} />
+        <div className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none opacity-0 animate-fade-in" style={{ animationDuration: "1.2s", animationDelay: "0.2s", animationFillMode: "forwards" }} />
+
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
@@ -170,7 +173,7 @@ const Catalogo = () => {
                 }}
                 className="grid sm:grid-cols-2 gap-3 pt-2"
               >
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
+                <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Comprimidos
                   </div>
@@ -178,7 +181,7 @@ const Catalogo = () => {
                     Crianças <span className="font-semibold">+6 anos</span> e adultos
                   </div>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
+                <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Xarope
                   </div>
@@ -235,34 +238,45 @@ const Catalogo = () => {
 
             {/* Image column */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 relative"
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 relative transform-gpu"
             >
+              {/* Halo: static on mobile / reduced-motion, gentle pulse on desktop */}
               <motion.div
-                animate={{ scale: [1, 1.05, 1], opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl"
+                aria-hidden
+                animate={lightMotion ? undefined : { scale: [1, 1.03, 1], opacity: [0.75, 1, 0.75] }}
+                transition={lightMotion ? undefined : { duration: 9, repeat: Infinity, ease: "easeInOut" }}
+                style={{ willChange: lightMotion ? "auto" : "transform, opacity" }}
+                className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl pointer-events-none transform-gpu"
               />
               <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5"
+                animate={lightMotion ? undefined : { y: [0, -8, 0] }}
+                transition={lightMotion ? undefined : { duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                style={{ willChange: lightMotion ? "auto" : "transform" }}
+                className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5 transform-gpu"
               >
                 <img
                   src={dynadolHero.url}
                   alt="Família feliz com produtos Dynadol — comprimidos e xarope"
                   className="w-full h-auto object-cover"
                   loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                 />
-                {/* Shimmer sweep */}
-                <motion.div
-                  initial={{ x: "-120%" }}
-                  animate={{ x: "120%" }}
-                  transition={{ duration: 2.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
-                />
+
+                {/* Shimmer sweep — desktop only, one-shot */}
+                {!lightMotion && (
+                  <motion.div
+                    aria-hidden
+                    initial={{ x: "-120%" }}
+                    animate={{ x: "120%" }}
+                    transition={{ duration: 2.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ willChange: "transform" }}
+                    className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none transform-gpu"
+                  />
+                )}
                 {/* Floating accent badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
