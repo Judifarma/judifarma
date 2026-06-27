@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -58,13 +59,13 @@ const Header = () => {
 
         {/* Main navigation */}
         <div className="flex items-center justify-between py-2">
-          <a href="#inicio" className="flex items-center relative z-10">
+          <Link to="/" className="flex items-center relative z-10">
             <img
               src={logoJudifarma}
               alt="JudiFarma - Distribuidora Farmacêutica"
               className={`w-auto transition-all duration-500 ${scrolled ? "h-10 md:h-12" : "h-12 md:h-16"}`}
             />
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
