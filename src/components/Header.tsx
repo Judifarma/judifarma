@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -80,6 +81,7 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeSwitcher className="hidden sm:inline-flex" />
             <LanguageSwitcher className="hidden sm:inline-flex" />
             <Button asChild variant="medical" size="lg" className="hidden md:inline-flex shadow-soft hover:shadow-glow transition-all duration-500">
               <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">{t("nav.contactUs")}</a>
@@ -119,7 +121,8 @@ const Header = () => {
                 <Button asChild variant="medical" size="lg" className="mt-2">
                   <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>{t("nav.contactUs")}</a>
                 </Button>
-                <div className="mt-2 flex justify-center sm:hidden">
+                <div className="mt-2 flex justify-center gap-2 sm:hidden">
+                  <ThemeSwitcher />
                   <LanguageSwitcher />
                 </div>
               </nav>
