@@ -67,11 +67,10 @@ const Services = () => {
           className="text-center mb-20"
         >
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-5">
-            Nossos Produtos
+            {t("services.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Garantimos o fornecimento eficiente e seguro de medicamentos, com distribuição
-            rápida e qualidade certificada em toda Angola.
+            {t("services.subtitle")}
           </p>
         </motion.div>
 
@@ -106,7 +105,7 @@ const Services = () => {
                 </ul>
                 <Button asChild variant="ghost" className="w-full justify-between text-primary hover:bg-primary/5 group/btn">
                   <Link to="/catalogo">
-                    Saiba Mais
+                    {t("common.knowMore")}
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Link>
                 </Button>
@@ -141,10 +140,10 @@ const Services = () => {
                 <Clock className="w-8 h-8 text-primary-foreground" />
               </div>
               <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
-                Precisa de Medicamentos com Urgência?
+                {t("services.urgentTitle")}
               </h3>
               <p className="text-primary-foreground/70 mb-8 text-lg">
-                Entrega rápida em Luanda em 2-3 horas. Entre em contacto connosco agora!
+                {t("services.urgentSubtitle")}
               </p>
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-elevated text-base px-8 py-6 rounded-xl">
                 <a href="https://wa.me/244945517448" target="_blank" rel="noopener noreferrer">WhatsApp: +244 945 517 448</a>
