@@ -266,13 +266,17 @@ const Catalogo = () => {
                   fetchPriority="high"
                 />
 
-                {/* Shimmer sweep */}
-                <motion.div
-                  initial={{ x: "-120%" }}
-                  animate={{ x: "120%" }}
-                  transition={{ duration: 2.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
-                />
+                {/* Shimmer sweep — desktop only, one-shot */}
+                {!lightMotion && (
+                  <motion.div
+                    aria-hidden
+                    initial={{ x: "-120%" }}
+                    animate={{ x: "120%" }}
+                    transition={{ duration: 2.2, delay: 1, ease: [0.16, 1, 0.3, 1] }}
+                    style={{ willChange: "transform" }}
+                    className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none transform-gpu"
+                  />
+                )}
                 {/* Floating accent badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
