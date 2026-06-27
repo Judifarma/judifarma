@@ -132,10 +132,10 @@ const Services = () => {
                   ))}
                 </ul>
                 <Button asChild variant="ghost" className="w-full justify-between text-primary hover:bg-primary/5 group/btn">
-                  <a href="#contato">
+                  <Link to="/catalogo">
                     Saiba Mais
                     <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </a>
+                  </Link>
                 </Button>
               </motion.div>
             );

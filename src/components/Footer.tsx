@@ -49,10 +49,10 @@ const Footer = () => {
             <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">Links Rápidos</h4>
             <ul className="space-y-3 text-sm">
               {[
-                { href: "#inicio", label: "Início" },
-                { href: "#servicos", label: "Nossos Serviços" },
-                { href: "#sobre", label: "Sobre Nós" },
-                { href: "#contato", label: "Contacto" },
+                { href: "/", label: "Início" },
+                { href: "/catalogo", label: "Produtos" },
+                { href: "/sobre", label: "Sobre Nós" },
+                { href: "/contacto", label: "Contacto" },
                 { href: "#", label: "Política de Privacidade" }
               ].map((link, i) => (
                 <li key={i}>
