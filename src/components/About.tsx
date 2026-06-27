@@ -2,20 +2,22 @@ import { Button } from "@/components/ui/button";
 import { Award, Truck, MapPin, ShieldCheck, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
   const stats = [
-    { icon: Truck, number: "2-3h", label: "Tempo de Entrega", description: "Entrega rápida em Luanda" },
-    { icon: ShieldCheck, number: "BPD", label: "Certificação", description: "Boas Práticas de Distribuição" },
-    { icon: Award, number: "100%", label: "Qualidade Garantida", description: "Produtos certificados e rastreados" },
-    { icon: MapPin, number: "Nacional", label: "Cobertura", description: "Distribuição em Luanda e todo o país" }
+    { icon: Truck, number: "2-3h", label: t("about.deliveryTime"), description: t("about.deliveryDesc") },
+    { icon: ShieldCheck, number: "BPD", label: t("about.certification"), description: t("about.certDesc") },
+    { icon: Award, number: "100%", label: t("about.qualityGuar"), description: t("about.qualityDesc") },
+    { icon: MapPin, number: t("about.national"), label: t("about.coverage"), description: t("about.coverageDesc") }
   ];
 
   const differentials = [
-    "Distribuição rápida",
-    "Produtos de qualidade garantida",
-    "Atendimento próximo ao cliente",
-    "Cadeia de frio controlada"
+    t("about.d1"),
+    t("about.d2"),
+    t("about.d3"),
+    t("about.d4")
   ];
 
   return (
@@ -35,12 +37,10 @@ const About = () => {
           >
             <div className="space-y-5">
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground leading-tight">
-                Sobre a <span className="text-gradient">JudiFarma</span>
+                {t("about.titleStart")} <span className="text-gradient">JudiFarma</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Fundada em 26 de Setembro de 2024, a JudiFarma é uma distribuidora farmacêutica
-                dedicada ao fornecimento eficiente e seguro de medicamentos, contribuindo para a
-                melhoria da saúde da população angolana.
+                {t("about.intro")}
               </p>
             </div>
 
@@ -48,20 +48,18 @@ const About = () => {
               <div className="space-y-4">
                 <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10">
                   <p className="text-muted-foreground">
-                    <strong className="text-foreground">Missão:</strong> Garantir o fornecimento eficiente e seguro de medicamentos,
-                    contribuindo para a melhoria da saúde da população.
+                    <strong className="text-foreground">{t("about.mission")}:</strong> {t("about.missionText")}
                   </p>
                 </div>
                 <div className="p-5 rounded-2xl bg-accent/5 border border-accent/10">
                   <p className="text-muted-foreground">
-                    <strong className="text-foreground">Visão:</strong> Ser uma distribuidora farmacêutica de referência em Angola,
-                    reconhecida pela qualidade, confiança e eficiência logística.
+                    <strong className="text-foreground">{t("about.vision")}:</strong> {t("about.visionText")}
                   </p>
                 </div>
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-lg font-bold text-foreground">Nossos Diferenciais</h3>
+                <h3 className="text-lg font-bold text-foreground">{t("about.differentialsTitle")}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {differentials.map((item, i) => (
                     <motion.div
@@ -81,7 +79,7 @@ const About = () => {
 
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base px-8 py-6 rounded-xl group">
                 <Link to="/contacto">
-                  Solicitar Cotação
+                  {t("common.requestQuote")}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
@@ -137,14 +135,13 @@ const About = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-transparent to-accent/3" />
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                Nosso Portfólio de Produtos
+                {t("about.portfolioTitle")}
               </h3>
               <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
-                Trabalhamos com uma ampla gama de produtos farmacêuticos para atender
-                farmácias, clínicas e hospitais em toda Angola.
+                {t("about.portfolioSub")}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                {["Medicamentos Genéricos", "Medicamentos de Marca", "Produtos Farmacêuticos Diversos"].map((product, i) => (
+                {[t("about.tagGenerics"), t("about.tagBrand"), t("about.tagDiverse")].map((product, i) => (
                   <div key={i} className="px-6 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium shadow-soft hover:shadow-glow transition-all duration-500 hover:scale-105 cursor-default">
                     {product}
                   </div>
@@ -153,7 +150,7 @@ const About = () => {
               <div className="mt-10">
                 <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-soft hover:shadow-glow transition-all duration-500 text-base px-8 py-6 rounded-xl group">
                   <a href="/catalogo">
-                    Ver Catálogo Completo
+                    {t("common.viewCatalog")}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
