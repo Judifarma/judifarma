@@ -9,8 +9,10 @@ import {
   Facebook,
   MessageCircle
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="bg-gradient-dark text-primary-foreground">
       <div className="container mx-auto px-4">
@@ -24,12 +26,11 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold">JudiFarma</h3>
-                <p className="text-xs opacity-60">Distribuidora Farmacêutica</p>
+                <p className="text-xs opacity-60">{t("footer.tagline")}</p>
               </div>
             </div>
             <p className="text-sm opacity-60 leading-relaxed max-w-xs">
-              Distribuidora farmacêutica de referência em Angola, garantindo o fornecimento
-              eficiente e seguro de medicamentos.
+              {t("footer.about")}
             </p>
             <div className="flex gap-2">
               {[
@@ -46,14 +47,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="space-y-5">
-            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">Links Rápidos</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">{t("footer.quickLinks")}</h4>
             <ul className="space-y-3 text-sm">
               {[
-                { href: "/", label: "Início" },
-                { href: "/catalogo", label: "Produtos" },
-                { href: "/sobre", label: "Sobre Nós" },
-                { href: "/contacto", label: "Contacto" },
-                { href: "#", label: "Política de Privacidade" }
+                { href: "/", label: t("nav.home") },
+                { href: "/catalogo", label: t("nav.products") },
+                { href: "/sobre", label: t("footer.aboutUs") },
+                { href: "/contacto", label: t("nav.contact") },
+                { href: "#", label: t("footer.privacy") }
               ].map((link, i) => (
                 <li key={i}>
                   <a href={link.href} className="opacity-50 hover:opacity-100 transition-opacity duration-300 hover:text-primary-foreground">
@@ -66,9 +67,16 @@ const Footer = () => {
 
           {/* Products */}
           <div className="space-y-5">
-            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">Produtos</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">{t("footer.products")}</h4>
             <ul className="space-y-3 text-sm">
-              {["Medicamentos Genéricos", "Medicamentos de Marca", "Produtos Farmacêuticos", "Distribuição Nacional", "Cadeia de Frio", "Controle de Qualidade"].map((item, i) => (
+              {[
+                t("services.items.generics.title"),
+                t("services.items.brand.title"),
+                t("about.tagDiverse"),
+                t("hero.national"),
+                t("services.items.cold.title"),
+                t("services.items.quality.title"),
+              ].map((item, i) => (
                 <li key={i} className="opacity-50">{item}</li>
               ))}
             </ul>
@@ -76,11 +84,11 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-5">
-            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">Contacto</h4>
+            <h4 className="font-bold text-sm uppercase tracking-wider opacity-80">{t("footer.contact")}</h4>
             <div className="space-y-4 text-sm">
               {[
-                { icon: Phone, primary: "+244 945 490 359", secondary: "Seg-Sex: 08h às 16h" },
-                { icon: MessageCircle, primary: "+244 945 517 448", secondary: "WhatsApp" },
+                { icon: Phone, primary: "+244 945 490 359", secondary: t("contact.hours") },
+                { icon: MessageCircle, primary: "+244 945 517 448", secondary: t("contact.whatsapp") },
                 { icon: Mail, primary: "judifarma6@gmail.com" },
                 { icon: MapPin, primary: "Bairro Sanzala, Viana", secondary: "Luanda - Angola" }
               ].map((item, i) => (
@@ -105,8 +113,8 @@ const Footer = () => {
                   <Clock className="w-5 h-5 text-primary-foreground" />
                 </div>
                 <div className="text-left">
-                  <p className="font-bold text-primary-foreground text-sm">Solicite uma Cotação</p>
-                  <p className="text-xs text-primary-foreground/60">Atendemos farmácias, clínicas e hospitais</p>
+                  <p className="font-bold text-primary-foreground text-sm">{t("footer.ctaTitle")}</p>
+                  <p className="text-xs text-primary-foreground/60">{t("footer.ctaSub")}</p>
                 </div>
               </div>
               <Button asChild size="lg" className="bg-primary-foreground text-foreground hover:bg-primary-foreground/90 shadow-lg rounded-xl px-6">
@@ -122,11 +130,11 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-primary-foreground/10 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs opacity-50">
-            <span>© 2024 JudiFarma. Todos os direitos reservados. NIF: 5002008459</span>
+            <span>{t("footer.rights")}</span>
             <div className="flex items-center gap-1.5">
-              <span>Feito com</span>
+              <span>{t("footer.madeWith")}</span>
               <Heart className="w-3 h-3 text-red-400 fill-red-400" />
-              <span>para a saúde de Angola</span>
+              <span>{t("footer.forHealth")}</span>
             </div>
           </div>
         </div>
