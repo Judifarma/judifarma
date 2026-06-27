@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Award, Truck, MapPin, ShieldCheck, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const stats = [
