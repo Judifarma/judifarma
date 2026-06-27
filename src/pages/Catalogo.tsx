@@ -89,44 +89,88 @@ const Catalogo = () => {
       <Header />
 
       {/* Fancy Dynadol Hero */}
-      <section className="relative overflow-hidden pt-28 lg:pt-32 bg-white">
+      <section className="relative overflow-hidden pt-40 lg:pt-48 pb-16 lg:pb-24 bg-white">
         {/* Decorative ambient */}
-        <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none"
+        />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
             {/* Text column */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+              }}
               className="lg:col-span-5 space-y-7"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                }}
+                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-xs font-semibold tracking-[0.18em] uppercase"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Produto em destaque
-              </div>
+              </motion.div>
 
-              <h1 className="font-bold leading-[0.95] tracking-tight text-foreground text-5xl md:text-6xl lg:text-7xl">
+              <motion.h1
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+                }}
+                className="font-bold leading-[0.95] tracking-tight text-foreground text-5xl md:text-6xl lg:text-7xl"
+              >
                 Dynadol
                 <span className="block mt-2 text-2xl md:text-3xl lg:text-4xl font-light text-muted-foreground italic">
                   Comprimido & Xarope
                 </span>
-              </h1>
+              </motion.h1>
 
-              <div className="h-px w-24 bg-gradient-to-r from-primary to-transparent" />
+              <motion.div
+                variants={{
+                  hidden: { scaleX: 0, opacity: 0 },
+                  show: { scaleX: 1, opacity: 1, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
+                }}
+                style={{ originX: 0 }}
+                className="h-px w-24 bg-gradient-to-r from-primary to-transparent"
+              />
 
-              <p className="text-base md:text-lg text-foreground/75 leading-relaxed">
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+                }}
+                className="text-base md:text-lg text-foreground/75 leading-relaxed"
+              >
                 Uma formulação de <span className="font-semibold text-foreground">paracetamol</span> acessível,
                 segura e eficaz, com ação <span className="text-primary font-semibold">analgésica</span> e{" "}
                 <span className="text-primary font-semibold">antipirética</span>, que proporciona alívio para
                 dores leves a moderadas e febre — dores de cabeça, dor de dente, resfriado, gripe, dores
                 articulares ou cólicas menstruais.
-              </p>
+              </motion.p>
 
-              <div className="grid sm:grid-cols-2 gap-3 pt-2">
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+                }}
+                className="grid sm:grid-cols-2 gap-3 pt-2"
+              >
+                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Comprimidos
                   </div>
@@ -134,7 +178,7 @@ const Catalogo = () => {
                     Crianças <span className="font-semibold">+6 anos</span> e adultos
                   </div>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4">
+                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Xarope
                   </div>
@@ -142,9 +186,15 @@ const Catalogo = () => {
                     Crianças de <span className="font-semibold">1 a 6 anos</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+                }}
+                className="flex flex-col sm:flex-row gap-3 pt-2"
+              >
                 <Button
                   asChild
                   size="lg"
@@ -169,34 +219,55 @@ const Catalogo = () => {
                 >
                   <a href="#catalogo">Ver todos os produtos</a>
                 </Button>
-              </div>
+              </motion.div>
 
-              <p className="text-xs text-muted-foreground/80 leading-relaxed pt-2 max-w-md border-l-2 border-primary/40 pl-3">
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: { opacity: 1, transition: { duration: 0.8 } },
+                }}
+                className="text-xs text-muted-foreground/80 leading-relaxed pt-2 max-w-md border-l-2 border-primary/40 pl-3"
+              >
                 Dosagens superiores às recomendadas na bula podem causar danos. Não utilize continuamente por
                 mais de 10 dias sem consultar seu médico.
-              </p>
+              </motion.p>
             </motion.div>
 
             {/* Image column */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className="lg:col-span-7 relative"
             >
-              <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl" />
-              <div className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5">
+              <motion.div
+                animate={{ scale: [1, 1.05, 1], opacity: [0.7, 1, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl"
+              />
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5"
+              >
                 <img
                   src={dynadolHero.url}
                   alt="Família feliz com produtos Dynadol — comprimidos e xarope"
                   className="w-full h-auto object-cover"
                   loading="eager"
                 />
+                {/* Shimmer sweep */}
+                <motion.div
+                  initial={{ x: "-120%" }}
+                  animate={{ x: "120%" }}
+                  transition={{ duration: 2.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 pointer-events-none"
+                />
                 {/* Floating accent badge */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
                   className="hidden md:flex absolute top-6 left-6 items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/60 shadow-soft"
                 >
                   <CheckCircle2 className="w-4 h-4 text-primary" />
@@ -204,11 +275,12 @@ const Catalogo = () => {
                     Para toda a família
                   </span>
                 </motion.div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
+
 
       <section id="catalogo" className="pt-20 pb-12 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
         <div className="absolute top-10 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
