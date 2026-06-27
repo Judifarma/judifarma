@@ -102,19 +102,10 @@ const Catalogo = () => {
 
       {/* Fancy Dynadol Hero */}
       <section className="relative overflow-hidden pt-40 lg:pt-48 pb-16 lg:pb-24 bg-white">
-        {/* Decorative ambient */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none"
-        />
+        {/* Decorative ambient — static, no continuous animation (cheap paint, no jank) */}
+        <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none opacity-0 animate-fade-in" style={{ animationDuration: "1.2s", animationFillMode: "forwards" }} />
+        <div className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none opacity-0 animate-fade-in" style={{ animationDuration: "1.2s", animationDelay: "0.2s", animationFillMode: "forwards" }} />
+
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
