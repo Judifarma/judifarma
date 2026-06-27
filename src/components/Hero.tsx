@@ -5,8 +5,10 @@ import teamImage3 from "@/assets/team-3.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
   const heroImages = [teamImage2, teamImage3];
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -38,14 +40,13 @@ const Hero = () => {
             >
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight">
-                Sua{" "}
-                <span className="text-gradient">Distribuidora Farmacêutica</span>{" "}
-                de Confiança
+                {t("hero.titleStart")}{" "}
+                <span className="text-gradient">{t("hero.titleHighlight")}</span>{" "}
+                {t("hero.titleEnd")}
               </h1>
 
               <p className="text-lg md:text-xl text-primary-foreground/70 max-w-lg leading-relaxed">
-                Distribuição rápida de medicamentos genéricos, de marca e produtos farmacêuticos
-                para farmácias, clínicas e hospitais em toda Angola.
+                {t("hero.subtitle")}
               </p>
             </motion.div>
 
@@ -57,9 +58,9 @@ const Hero = () => {
               className="grid grid-cols-3 gap-2 sm:gap-4"
             >
               {[
-                { icon: Shield, label: "Qualidade Garantida", color: "from-primary to-primary/60" },
-                { icon: Truck, label: "Entrega em 2-3h", color: "from-accent to-accent/60" },
-                { icon: Clock, label: "Distribuição Nacional", color: "from-secondary to-secondary/60" },
+                { icon: Shield, label: t("hero.quality"), color: "from-primary to-primary/60" },
+                { icon: Truck, label: t("hero.delivery"), color: "from-accent to-accent/60" },
+                { icon: Clock, label: t("hero.national"), color: "from-secondary to-secondary/60" },
               ].map((item, i) => (
                 <div key={i} className="text-center group cursor-default">
                   <div className={`w-10 h-10 sm:w-14 sm:h-14 mx-auto mb-2 sm:mb-3 rounded-xl sm:rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}>
@@ -80,12 +81,12 @@ const Hero = () => {
               <Button asChild size="lg" className="bg-gradient-primary text-primary-foreground border-0 shadow-glow hover:shadow-elevated transition-all duration-500 text-base px-8 py-6 rounded-xl group">
                 <Link to="/contacto">
                   <Phone className="w-5 h-5 mr-2" />
-                  Solicitar Cotação
+                  {t("common.requestQuote")}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="bg-white text-foreground border-white hover:bg-white/90 text-base px-8 py-6 rounded-xl">
-                <Link to="/catalogo">Conheça Nosso Portfólio</Link>
+                <Link to="/catalogo">{t("common.ourPortfolio")}</Link>
               </Button>
             </motion.div>
           </div>
@@ -135,8 +136,8 @@ const Hero = () => {
                   <span className="text-accent-foreground font-bold text-sm">BPD</span>
                 </div>
                 <div>
-                  <p className="font-bold text-foreground">Certificação BPD</p>
-                  <p className="text-sm text-muted-foreground">Boas Práticas de Distribuição</p>
+                  <p className="font-bold text-foreground">{t("hero.bpd")}</p>
+                  <p className="text-sm text-muted-foreground">{t("hero.bpdSub")}</p>
                 </div>
               </div>
             </motion.div>
@@ -150,7 +151,7 @@ const Hero = () => {
             >
               <div className="text-center">
                 <p className="text-3xl font-bold text-gradient">2-3h</p>
-                <p className="text-xs text-muted-foreground font-medium">Entrega em Luanda</p>
+                <p className="text-xs text-muted-foreground font-medium">{t("hero.deliveryLuanda")}</p>
               </div>
             </motion.div>
           </motion.div>
