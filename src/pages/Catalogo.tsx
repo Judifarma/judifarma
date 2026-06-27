@@ -17,6 +17,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import { resolveImage } from "@/lib/catalog-utils";
+import dynadolHero from "@/assets/dynadol-hero.jpeg.asset.json";
 
 const WA_BASE = "https://wa.me/244945517448";
 
@@ -87,7 +88,129 @@ const Catalogo = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <section className="pt-32 pb-12 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
+      {/* Fancy Dynadol Hero */}
+      <section className="relative overflow-hidden pt-28 lg:pt-32 bg-white">
+        {/* Decorative ambient */}
+        <div className="absolute -top-20 -left-20 w-[28rem] h-[28rem] bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-32 right-0 w-[32rem] h-[32rem] bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+            {/* Text column */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-5 space-y-7"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                Produto em destaque
+              </div>
+
+              <h1 className="font-bold leading-[0.95] tracking-tight text-foreground text-5xl md:text-6xl lg:text-7xl">
+                Dynadol
+                <span className="block mt-2 text-2xl md:text-3xl lg:text-4xl font-light text-muted-foreground italic">
+                  Comprimido & Xarope
+                </span>
+              </h1>
+
+              <div className="h-px w-24 bg-gradient-to-r from-primary to-transparent" />
+
+              <p className="text-base md:text-lg text-foreground/75 leading-relaxed">
+                Uma formulação de <span className="font-semibold text-foreground">paracetamol</span> acessível,
+                segura e eficaz, com ação <span className="text-primary font-semibold">analgésica</span> e{" "}
+                <span className="text-primary font-semibold">antipirética</span>, que proporciona alívio para
+                dores leves a moderadas e febre — dores de cabeça, dor de dente, resfriado, gripe, dores
+                articulares ou cólicas menstruais.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-3 pt-2">
+                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4">
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    Comprimidos
+                  </div>
+                  <div className="text-sm text-foreground/80">
+                    Crianças <span className="font-semibold">+6 anos</span> e adultos
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4">
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                    Xarope
+                  </div>
+                  <div className="text-sm text-foreground/80">
+                    Crianças de <span className="font-semibold">1 a 6 anos</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-gradient-primary text-primary-foreground border-0 shadow-glow hover:shadow-elevated transition-all duration-500 px-7 py-6 rounded-xl"
+                >
+                  <a
+                    href={`${WA_BASE}?text=${encodeURIComponent(
+                      "Olá JudiFarma, gostaria de uma cotação para Dynadol (Comprimido / Xarope).",
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    Solicitar cotação
+                  </a>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  size="lg"
+                  className="border-foreground/15 hover:bg-foreground/5 px-7 py-6 rounded-xl"
+                >
+                  <a href="#catalogo">Ver todos os produtos</a>
+                </Button>
+              </div>
+
+              <p className="text-xs text-muted-foreground/80 leading-relaxed pt-2 max-w-md border-l-2 border-primary/40 pl-3">
+                Dosagens superiores às recomendadas na bula podem causar danos. Não utilize continuamente por
+                mais de 10 dias sem consultar seu médico.
+              </p>
+            </motion.div>
+
+            {/* Image column */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="lg:col-span-7 relative"
+            >
+              <div className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl" />
+              <div className="relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5">
+                <img
+                  src={dynadolHero.url}
+                  alt="Família feliz com produtos Dynadol — comprimidos e xarope"
+                  className="w-full h-auto object-cover"
+                  loading="eager"
+                />
+                {/* Floating accent badge */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  className="hidden md:flex absolute top-6 left-6 items-center gap-2 px-4 py-2 rounded-full bg-white/90 backdrop-blur-md border border-white/60 shadow-soft"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-primary" />
+                  <span className="text-xs font-semibold text-foreground">
+                    Para toda a família
+                  </span>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalogo" className="pt-20 pb-12 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
         <div className="absolute top-10 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
         <div className="container mx-auto px-4 relative z-10">
