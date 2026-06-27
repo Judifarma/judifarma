@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import Judiagro from "./pages/Judiagro";
 import Jiditecno from "./pages/Jiditecno";
 import Catalogo from "./pages/Catalogo";
+import Sobre from "./pages/Sobre";
+import Contacto from "./pages/Contacto";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -24,6 +26,8 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/catalogo" element={<Catalogo />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contacto" element={<Contacto />} />
             <Route path="/judiagro" element={<Judiagro />} />
             <Route path="/jiditecno" element={<Jiditecno />} />
             <Route path="/auth" element={<Auth />} />
