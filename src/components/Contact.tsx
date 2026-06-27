@@ -16,6 +16,7 @@ import {
 import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = {
   instagram: "https://instagram.com/judifarma",
@@ -23,24 +24,25 @@ const SOCIAL_LINKS = {
 };
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.message) {
-      toast.error("Preencha pelo menos o nome e a descrição do pedido.");
+      toast.error(t("contact.errorRequired"));
       return;
     }
-    const text = `*Pedido de Cotação - JudiFarma*%0A%0A*Nome/Empresa:* ${form.name}%0A*E-mail:* ${form.email}%0A*Telefone:* ${form.phone}%0A*Tipo de Instituição:* ${form.type}%0A%0A*Descrição:*%0A${form.message}`;
+    const text = `*${t("contact.formTitle")} - JudiFarma*%0A%0A*${t("contact.name")}:* ${form.name}%0A*${t("contact.email")}:* ${form.email}%0A*${t("contact.phone")}:* ${form.phone}%0A*${t("contact.typeInst")}:* ${form.type}%0A%0A*${t("contact.request")}:*%0A${form.message}`;
     window.open(`https://wa.me/244945517448?text=${text}`, "_blank");
-    toast.success("A abrir o WhatsApp com o seu pedido...");
+    toast.success(t("contact.opening"));
   };
 
   const contactInfo = [
-    { icon: Phone, title: "Telefone", details: "+244 945 490 359", description: "Seg-Sex: 08h às 16h", gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
-    { icon: MessageCircle, title: "WhatsApp", details: "+244 945 517 448", description: "Envie a sua mensagem", gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
-    { icon: Mail, title: "E-mail", details: "judifarma6@gmail.com", description: "Respondemos o mais breve possível", gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
-    { icon: MapPin, title: "Endereço", details: "Bairro Sanzala, Município de Viana", description: "Província de Luanda, Angola", gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
+    { icon: Phone, title: t("contact.phone"), details: "+244 945 490 359", description: t("contact.hours"), gradient: "from-primary to-primary/70", link: "tel:+244945490359" },
+    { icon: MessageCircle, title: t("contact.whatsapp"), details: "+244 945 517 448", description: t("contact.whatsappDesc"), gradient: "from-accent to-accent/70", link: "https://wa.me/244945517448" },
+    { icon: Mail, title: t("contact.email"), details: "judifarma6@gmail.com", description: t("contact.emailDesc"), gradient: "from-secondary to-secondary/70", link: "mailto:judifarma6@gmail.com" },
+    { icon: MapPin, title: t("contact.address"), details: t("contact.addressDetail"), description: t("contact.addressDesc"), gradient: "from-primary to-accent/70", link: "https://maps.google.com/?q=Bairro+Sanzala+Viana+Luanda" }
   ];
 
   return (
