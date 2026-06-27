@@ -13,6 +13,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import product1 from "@/assets/product-1.jpeg";
 import product2 from "@/assets/product-2.jpeg";
 import product3 from "@/assets/product-3.jpeg";
@@ -20,6 +21,7 @@ import product3 from "@/assets/product-3.jpeg";
 const ctaImages = [product1, product2, product3];
 
 const Services = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -29,56 +31,26 @@ const Services = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const services = [
-    {
-      icon: Pill,
-      title: "Medicamentos Genéricos",
-      description: "Distribuição de medicamentos genéricos de qualidade certificada para farmácias, clínicas e hospitais.",
-      features: ["Produtos certificados", "Preços competitivos", "Stock permanente"],
-      gradient: "from-primary/10 to-primary/5",
-      iconBg: "from-primary to-primary/70"
-    },
-    {
-      icon: Package,
-      title: "Medicamentos de Marca",
-      description: "Portfólio completo de medicamentos de marca com garantia de procedência e qualidade.",
-      features: ["Marcas reconhecidas", "Garantia de origem", "Variedade de produtos"],
-      gradient: "from-accent/10 to-accent/5",
-      iconBg: "from-accent to-accent/70"
-    },
-    {
-      icon: Truck,
-      title: "Distribuição Rápida",
-      description: "Entrega em Luanda em 2-3 horas e distribuição nacional com logística eficiente.",
-      features: ["Entrega em 2-3h em Luanda", "Cobertura nacional", "Rastreamento de entregas"],
-      gradient: "from-secondary/10 to-secondary/5",
-      iconBg: "from-secondary to-secondary/70"
-    },
-    {
-      icon: Thermometer,
-      title: "Cadeia de Frio Controlada",
-      description: "Monitoramento rigoroso de temperatura para garantir a integridade dos medicamentos.",
-      features: ["Monitoramento contínuo", "Controle de temperatura", "Conformidade regulatória"],
-      gradient: "from-primary/10 to-accent/5",
-      iconBg: "from-primary to-accent/70"
-    },
-    {
-      icon: Warehouse,
-      title: "Armazéns Próprios",
-      description: "Infraestrutura de armazenamento moderna com condições ideais para todos os tipos de medicamentos.",
-      features: ["Armazéns certificados", "Controle de validade", "Gestão de stock eficiente"],
-      gradient: "from-accent/10 to-secondary/5",
-      iconBg: "from-accent to-secondary/70"
-    },
-    {
-      icon: ClipboardCheck,
-      title: "Controle de Qualidade",
-      description: "Certificação em Boas Práticas de Distribuição (BPD/GDP) e política de qualidade documentada.",
-      features: ["Certificação BPD/GDP", "Política de qualidade", "Rastreabilidade total"],
-      gradient: "from-secondary/10 to-primary/5",
-      iconBg: "from-secondary to-primary/70"
-    }
-  ];
+  const serviceKeys = ["generics", "brand", "delivery", "cold", "warehouse", "quality"] as const;
+  const serviceMeta = {
+    generics: { icon: Pill, iconBg: "from-primary to-primary/70" },
+    brand: { icon: Package, iconBg: "from-accent to-accent/70" },
+    delivery: { icon: Truck, iconBg: "from-secondary to-secondary/70" },
+    cold: { icon: Thermometer, iconBg: "from-primary to-accent/70" },
+    warehouse: { icon: Warehouse, iconBg: "from-accent to-secondary/70" },
+    quality: { icon: ClipboardCheck, iconBg: "from-secondary to-primary/70" },
+  } as const;
+  const services = serviceKeys.map((k) => ({
+    icon: serviceMeta[k].icon,
+    iconBg: serviceMeta[k].iconBg,
+    title: t(`services.items.${k}.title`),
+    description: t(`services.items.${k}.description`),
+    features: [
+      t(`services.items.${k}.f1`),
+      t(`services.items.${k}.f2`),
+      t(`services.items.${k}.f3`),
+    ],
+  }));
 
   return (
     <section id="servicos" className="section-padding bg-background relative overflow-hidden">
