@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 
-const Index = () => {
+const Inicio = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -14,4 +14,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Inicio;
