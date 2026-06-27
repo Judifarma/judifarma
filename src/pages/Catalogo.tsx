@@ -173,7 +173,7 @@ const Catalogo = () => {
                 }}
                 className="grid sm:grid-cols-2 gap-3 pt-2"
               >
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
+                <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Comprimidos
                   </div>
@@ -181,7 +181,7 @@ const Catalogo = () => {
                     Crianças <span className="font-semibold">+6 anos</span> e adultos
                   </div>
                 </div>
-                <div className="rounded-2xl border border-border/60 bg-card/50 backdrop-blur p-4 transition-all duration-500 hover:-translate-y-1 hover:shadow-soft hover:border-primary/30">
+                <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
                   <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
                     Xarope
                   </div>
