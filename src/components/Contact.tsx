@@ -55,9 +55,6 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">
-            Fale connosco
-          </span>
           <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-5">
             Entre em Contacto
           </h2>
