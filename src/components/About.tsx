@@ -33,9 +33,6 @@ const About = () => {
             className="space-y-8"
           >
             <div className="space-y-5">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold">
-                Quem somos
-              </span>
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground leading-tight">
                 Sobre a <span className="text-gradient">JudiFarma</span>
               </h2>
