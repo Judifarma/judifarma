@@ -465,7 +465,7 @@ const Catalogo = () => {
               exit={{ opacity: 0, y: 30, scale: 0.96 }}
               transition={{ duration: 0.3 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative bg-card rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-elevated"
+              className="relative bg-card rounded-3xl max-w-6xl w-full max-h-[92vh] overflow-y-auto shadow-elevated"
             >
               <button
                 onClick={() => setActive(null)}
@@ -475,12 +475,12 @@ const Catalogo = () => {
                 <X className="w-5 h-5" />
               </button>
               <div className="grid md:grid-cols-2">
-                <div className="aspect-square md:aspect-auto bg-muted/30 overflow-hidden flex items-center justify-center">
+                <div className="bg-muted/30 overflow-hidden flex items-center justify-center p-6 md:p-8 md:min-h-[560px]">
                   {resolveImage(active.image_url, active.slug) ? (
                     <img
                       src={resolveImage(active.image_url, active.slug)!}
                       alt={active.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-auto max-h-[70vh] object-contain"
                     />
                   ) : (
                     <Package className="w-16 h-16 text-muted-foreground/40" />
