@@ -382,64 +382,107 @@ const Catalogo = () => {
               Nenhum produto encontrado.
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div className="space-y-24 lg:space-y-32">
               {filtered.map((p, i) => {
                 const img = resolveImage(p.image_url, p.slug);
+                const reverse = i % 2 === 1;
                 return (
                   <motion.article
                     key={p.id}
-                    initial={{ opacity: 0, y: 24 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ duration: 0.5, delay: i * 0.05 }}
-                    className="card-premium group overflow-hidden flex flex-col"
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative"
                   >
-                    <button
-                      onClick={() => setActive(p)}
-                      className="relative aspect-[4/3] overflow-hidden bg-muted/40 flex items-center justify-center"
-                      aria-label={`Ver detalhes de ${p.name}`}
-                    >
-                      {img ? (
-                        <img
-                          src={img}
-                          alt={p.name}
-                          loading="lazy"
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                      ) : (
-                        <Package className="w-12 h-12 text-muted-foreground/40" />
-                      )}
-                    </button>
-                    <div className="p-6 flex flex-col flex-1">
-                      {p.category_id && (
-                        <p className="text-xs font-medium text-primary mb-2 uppercase tracking-wider">
-                          {catName(p.category_id)}
+                    <div className={`grid lg:grid-cols-12 gap-10 lg:gap-6 items-center ${reverse ? "lg:[&>*:first-child]:order-2" : ""}`}>
+                      {/* Text column */}
+                      <div className="lg:col-span-5 space-y-6">
+                        {p.category_id && (
+                          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-xs font-semibold tracking-[0.18em] uppercase">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                            {catName(p.category_id)}
+                          </div>
+                        )}
+
+                        <h2 className="font-bold leading-[0.95] tracking-tight text-foreground text-4xl md:text-5xl lg:text-6xl">
+                          {p.name}
+                        </h2>
+
+                        <div style={{ transformOrigin: "left" }} className="h-px w-24 bg-gradient-to-r from-primary to-transparent" />
+
+                        <p className="text-base md:text-lg text-foreground/75 leading-relaxed">
+                          {p.short_description}
                         </p>
-                      )}
-                      <h3 className="text-xl font-bold text-card-foreground mb-2">
-                        {p.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
-                        {p.short_description}
-                      </p>
-                      <div className="flex gap-2">
-                        <Button
-                          variant="ghost"
-                          onClick={() => setActive(p)}
-                          className="flex-1 hover:bg-primary/5 text-primary"
-                        >
-                          Detalhes
-                        </Button>
-                        <Button asChild variant="medical" className="flex-1">
-                          <a
-                            href={buildQuote(p)}
-                            target="_blank"
-                            rel="noopener noreferrer"
+
+                        {(p.composition || p.presentation) && (
+                          <div className="grid sm:grid-cols-2 gap-3 pt-2">
+                            {p.composition && (
+                              <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
+                                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                                  Composição
+                                </div>
+                                <div className="text-sm text-foreground/80">{p.composition}</div>
+                              </div>
+                            )}
+                            {p.presentation && (
+                              <div className="rounded-2xl border border-border/60 bg-card/70 p-4 transition-transform duration-300 hover:-translate-y-1 hover:border-primary/30">
+                                <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                                  Apresentação
+                                </div>
+                                <div className="text-sm text-foreground/80">{p.presentation}</div>
+                              </div>
+                            )}
+                          </div>
+                        )}
+
+                        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                          <Button
+                            asChild
+                            size="lg"
+                            className="bg-gradient-primary text-primary-foreground border-0 shadow-glow hover:shadow-elevated transition-all duration-500 px-7 py-6 rounded-xl"
                           >
-                            <MessageCircle className="w-4 h-4 mr-1.5" />
-                            Cotação
-                          </a>
-                        </Button>
+                            <a href={buildQuote(p)} target="_blank" rel="noopener noreferrer">
+                              <MessageCircle className="w-5 h-5 mr-2" />
+                              Solicitar cotação
+                            </a>
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="lg"
+                            onClick={() => setActive(p)}
+                            className="border-foreground/15 hover:bg-foreground/5 px-7 py-6 rounded-xl"
+                          >
+                            Ver detalhes
+                          </Button>
+                        </div>
+                      </div>
+
+                      {/* Image column */}
+                      <div className="lg:col-span-7 relative transform-gpu">
+                        <div
+                          aria-hidden
+                          className="absolute -inset-6 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent rounded-[2.5rem] blur-3xl pointer-events-none"
+                        />
+                        <button
+                          onClick={() => setActive(p)}
+                          aria-label={`Ver detalhes de ${p.name}`}
+                          className="group relative rounded-[2rem] overflow-hidden shadow-elevated ring-1 ring-foreground/5 transform-gpu w-full block"
+                        >
+                          {img ? (
+                            <img
+                              src={img}
+                              alt={p.name}
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-auto object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                            />
+                          ) : (
+                            <div className="aspect-[4/3] bg-muted/40 flex items-center justify-center">
+                              <Package className="w-16 h-16 text-muted-foreground/40" />
+                            </div>
+                          )}
+                        </button>
                       </div>
                     </div>
                   </motion.article>
@@ -449,6 +492,7 @@ const Catalogo = () => {
           )}
         </div>
       </section>
+
 
       <AnimatePresence>
         {active && (
